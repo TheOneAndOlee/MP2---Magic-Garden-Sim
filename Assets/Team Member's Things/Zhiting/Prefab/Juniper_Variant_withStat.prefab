@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &760674485315852067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2877797131948820513, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c626b750330f7d141bee268eec6acd1c, type: 2}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.1279483
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000015158481
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5965673
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7018081220002675932, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: m_Name
+      value: Juniper_Variant_withStat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495947579992696702, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c626b750330f7d141bee268eec6acd1c, type: 2}
+    - target: {fileID: 8967470867023493365, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9236e9d46c1010546a289ced619a9034, type: 2}
+    - target: {fileID: 9011575811209550178, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c626b750330f7d141bee268eec6acd1c, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7018081220002675932, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 608810332514411481}
+  m_SourcePrefab: {fileID: 100100000, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+--- !u!1 &7776395792518818815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7018081220002675932, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+  m_PrefabInstance: {fileID: 760674485315852067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &608810332514411481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7776395792518818815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372d511e19060f24294a14778e1ecd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZT_Flower
+  bloom: 0
+  maxBloom: 100
+  growthRate: 10
+  grayColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  colorProperty: _RColor
+  palette:
+  - {r: 0.18553454, g: 0.4654354, b: 1, a: 0}
+  - {r: 0.91572046, g: 0.18431371, b: 1, a: 0}
+  - {r: 1, g: 0, b: 0.18651617, a: 0}
+  - {r: 1, g: 0.805508, b: 0.18431371, a: 0}
+  water: 100
+  waterLossRate: 10
+  vitality: 100
+  maxVitality: 100
+  witherRate: 5
+  witheredPrefab: {fileID: 1580302831079661917, guid: 999920dc9f676b1469826fdcdcb36aff, type: 3}
