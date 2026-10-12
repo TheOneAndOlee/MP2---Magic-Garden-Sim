@@ -18,6 +18,7 @@ public class ZT_Flower : MonoBehaviour
 
     //stat:water
     public float water = 100f;
+    public float maxWater = 100f;
     public float waterLossRate = 5f;
 
     //stat:vitality
@@ -78,5 +79,15 @@ public class ZT_Flower : MonoBehaviour
         }
 
 
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        ZT_WaterDrop drop = collision.gameObject.GetComponent<ZT_WaterDrop>();
+        if (drop != null)
+        {
+            water += drop.waterAmount;
+            Destroy(collision.gameObject);
+        }
+        water = Mathf.Min(water, maxWater);
     }
 }
