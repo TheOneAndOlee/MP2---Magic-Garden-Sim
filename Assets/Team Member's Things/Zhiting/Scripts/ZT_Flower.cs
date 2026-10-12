@@ -17,9 +17,9 @@ public class ZT_Flower : MonoBehaviour
     private Renderer[] rends;
 
     //stat:water
-    public float water = 100f;
+    public float water = 10f;
     public float maxWater = 100f;
-    public float waterLossRate = 5f;
+    public float waterLossRate = 1f;
 
     //stat:vitality
     public float vitality = 100f;
