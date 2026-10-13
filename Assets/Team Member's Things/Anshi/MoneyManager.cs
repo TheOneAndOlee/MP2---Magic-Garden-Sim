@@ -5,7 +5,7 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager Instance;
 
-    public int money = 200;
+    public float money = 200;
     public TextMeshPro moneyText;
 
     private void Awake()
@@ -18,7 +18,7 @@ public class MoneyManager : MonoBehaviour
         UpdateUI();
     }
 
-    public bool SpendMoney(int amount)
+    public bool SpendMoney(float amount)
     {
         if (money < amount)
             return false;
@@ -27,7 +27,13 @@ public class MoneyManager : MonoBehaviour
         UpdateUI();
         return true;
     }
-
+    public bool AddMoney(float amount)
+    {
+        
+        money += amount;
+        UpdateUI();
+        return true;
+    }
     private void UpdateUI()
     {
         moneyText.text = "$" + money;
