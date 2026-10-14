@@ -9,6 +9,13 @@ public class ZT_WateringCan : MonoBehaviour
 
     private float timer;
 
+    // for resources
+
+    [Header("Optional resource cost")]
+    public bool useResource = false;
+    public ZT_ResourceType resourceType;
+    public float costPerDrop = 1f;
+
     void Update()
     {
         float currentAngle = Vector3.Angle(transform.up, Vector3.up);
@@ -17,8 +24,12 @@ public class ZT_WateringCan : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= dropInterval)
             {
-                Instantiate(dropPrefab, spout.position, spout.rotation);
                 timer = 0;
+                if (useResource && !ZT_Resources.Instance.TrySpend(resourceType, costPerDrop))
+                {
+                    return;
+                }
+                Instantiate(dropPrefab, spout.position, spout.rotation);
             }
         }
     }

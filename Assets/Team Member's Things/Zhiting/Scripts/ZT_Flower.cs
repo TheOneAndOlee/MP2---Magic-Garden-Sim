@@ -90,4 +90,16 @@ public class ZT_Flower : MonoBehaviour
         }
         water = Mathf.Min(water, maxWater);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        ZT_Shears shears = other.gameObject.GetComponent<ZT_Shears>();
+        if (bloom == maxBloom && shears != null)
+        {
+            ZT_Resources.Instance.AddResources(ZT_ResourceType.Flower, 1);
+            ZT_Resources.Instance.AddResources(ZT_ResourceType.Seed, Random.Range(1, 3));
+            Destroy(gameObject);
+
+        }
+    }
 }
