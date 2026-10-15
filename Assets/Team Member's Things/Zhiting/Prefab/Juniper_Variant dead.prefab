@@ -1,5 +1,139 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6503187969801615759
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5568296034440198129}
+    m_Modifications:
+    - target: {fileID: 7949266218280387131, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_Name
+      value: TutorialCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.43322
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.753
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 8.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+--- !u!224 &2695576232045494486 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+  m_PrefabInstance: {fileID: 6503187969801615759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3778098437036440500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7949266218280387131, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+  m_PrefabInstance: {fileID: 6503187969801615759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6815567799528038376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 336140278638044775, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+  m_PrefabInstance: {fileID: 6503187969801615759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &8397918780412747137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,6 +216,41 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b749330ce2cd72c4ab0d4a9f4e4017c4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2695576232045494486}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7018081220002675932, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1319802368639084669}
   m_SourcePrefab: {fileID: 100100000, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+--- !u!1 &1580302831079661917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7018081220002675932, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+  m_PrefabInstance: {fileID: 8397918780412747137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1319802368639084669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580302831079661917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130fc6f4a80829b438ffc2d85c5daad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZT_Tutorial
+  tutorialID: Bed
+  message: 'Log #4158: A dream has faded. Flowers left without water lose their color
+    and wither. Keep the beds wet, or build a rain machine beside them.'
+  triggerDistance: 1.5
+  showDuration: 20
+  popup: {fileID: 3778098437036440500}
+  popupText: {fileID: 6815567799528038376}
+--- !u!4 &5568296034440198129 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4165241550782294640, guid: 66df4564211af15479a2c04d7ec1a402, type: 3}
+  m_PrefabInstance: {fileID: 8397918780412747137}
+  m_PrefabAsset: {fileID: 0}

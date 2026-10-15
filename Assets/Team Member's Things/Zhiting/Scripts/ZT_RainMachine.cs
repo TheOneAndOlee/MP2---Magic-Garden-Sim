@@ -78,7 +78,7 @@ public class ZT_RainMachine : MonoBehaviour
 
         foreach (GameObject n in neighbors)
         {
-            ZT_Bed bed = n.GetComponent<ZT_Bed>();
+            ZT_Bed bed = n.GetComponentInChildren<ZT_Bed>();
             if (bed != null && storedRain >= waterPerBed)
             {
                 bed.moisture += waterPerBed;

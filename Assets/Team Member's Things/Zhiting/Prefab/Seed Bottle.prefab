@@ -215,8 +215,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.3, z: 1.33}
-  m_Center: {x: 0, y: -0.17, z: 0}
+  m_Size: {x: 0.83, y: 0.91, z: 0.79}
+  m_Center: {x: 0, y: 0.07, z: 0}
 --- !u!114 &8705988698496437922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ MonoBehaviour:
   dropPrefab: {fileID: 3889300976376341101, guid: ef9635d78ed52d34badb63b9e386f3ef, type: 3}
   spout: {fileID: 4641261677876492}
   pourAngle: 60
-  dropInterval: 5
+  dropInterval: 2
   useResource: 1
   resourceType: 1
   costPerDrop: 1

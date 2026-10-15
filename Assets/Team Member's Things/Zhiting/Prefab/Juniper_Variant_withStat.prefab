@@ -122,10 +122,10 @@ MonoBehaviour:
   - {r: 1, g: 0.805508, b: 0.18431371, a: 0}
   water: 10
   maxWater: 100
-  waterLossRate: 1
+  waterLossRate: 2
   vitality: 100
   maxVitality: 100
-  witherRate: 1
+  witherRate: 2
   witheredPrefab: {fileID: 1580302831079661917, guid: 999920dc9f676b1469826fdcdcb36aff, type: 3}
   dreamRibbon: {fileID: 7326939728359003090}
 --- !u!65 &5907963228340675065

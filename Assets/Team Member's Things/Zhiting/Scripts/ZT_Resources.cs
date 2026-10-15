@@ -10,6 +10,7 @@ public class ZT_Resources : MonoBehaviour
     void Start()
     {
         AddResources(ZT_ResourceType.Seed, 5);
+        AddResources(ZT_ResourceType.Rainwater, 20);
     }
     
     public float GetResources(ZT_ResourceType type)
