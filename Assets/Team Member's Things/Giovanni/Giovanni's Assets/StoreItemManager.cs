@@ -7,6 +7,9 @@ public class StoreItemManager : MonoBehaviour
     public GameObject lockedModel;
     public GameObject unlockedModel;
     
+    [Header("Weapon Link")]
+    public LaserPointerTargeter weaponScript; 
+
     [Header("Upgrade UI Elements")]
     public Button upgradeButton;
     public MeshRenderer[] statusSpheres; 
@@ -22,6 +25,7 @@ public class StoreItemManager : MonoBehaviour
     [HideInInspector] public bool isPlacedOnGrid = false;
     public int currentUpgradeLevel = 0; 
     private bool isUpgraded = false;
+    private bool itemPermanentlyUnlocked = false; 
 
     void Start()
     {
@@ -42,10 +46,10 @@ public class StoreItemManager : MonoBehaviour
 
         if (isPlacedOnGrid)
         {
+            itemPermanentlyUnlocked = true;
             if (lockedModel != null && lockedModel.activeSelf) lockedModel.SetActive(false);
-            if (unlockedModel != null && unlockedModel.activeSelf) unlockedModel.SetActive(false);
         }
-        else
+        else if (!itemPermanentlyUnlocked)
         {
             bool canAffordPurchase = GameManager.Instance.currentCurrency >= purchaseCost;
             
@@ -74,9 +78,7 @@ public class StoreItemManager : MonoBehaviour
     public void NotifyTowerPlaced()
     {
         isPlacedOnGrid = true;
-        
         if (lockedModel != null) lockedModel.SetActive(false);
-        if (unlockedModel != null) unlockedModel.SetActive(false);
     }
 
     public void PurchaseUpgrade()
@@ -93,6 +95,11 @@ public class StoreItemManager : MonoBehaviour
                 }
                 
                 currentUpgradeLevel++;
+
+                if (weaponScript != null)
+                {
+                    weaponScript.weaponUpgradeLevel = currentUpgradeLevel;
+                }
 
                 if (GameManager.Instance != null)
                 {
