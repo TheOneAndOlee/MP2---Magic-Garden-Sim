@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainLevel.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Team Member's Things/Anshi/Anshi Testing.unity
+    guid: 80f0b0defef3de0468788479d1ea9e99
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2fdb6370a43bfdb4c8a6b20ab961166c, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 672cc4a3a2443544e92f15383fbb137f, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5ce83be6da6b060448ab9ad30c23e798, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 01c830171e6fc984ca5c74ebb71c0857, type: 2}
