@@ -14,7 +14,9 @@ public class ZT_WateringCan : MonoBehaviour
     [Header("Optional resource cost")]
     public bool useResource = false;
     public ZT_ResourceType resourceType;
-    public float costPerDrop = 1f;
+    public float costPerDrop = 1f;    
+    public bool collectRain = false;
+
 
     void Update()
     {

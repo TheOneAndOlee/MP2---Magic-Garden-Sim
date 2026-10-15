@@ -195,9 +195,10 @@ MonoBehaviour:
   spout: {fileID: 1287114104017665073}
   pourAngle: 60
   dropInterval: 0.2
-  useResource: 0
-  resourceType: 0
+  useResource: 1
+  resourceType: 2
   costPerDrop: 1
+  collectRain: 1
 --- !u!114 &2937029270340729270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +342,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_Tutorial
   tutorialID: Watering Can
-  message: 'Log #4139: Tilt to pour water.'
+  message: 'Log #4139: Watering can. Tilt to pour. Each drop uses Rainwater. Touch
+    a rain machine to refill.'
   triggerDistance: 1.5
   showDuration: 20
   popup: {fileID: 4998142880989427638}

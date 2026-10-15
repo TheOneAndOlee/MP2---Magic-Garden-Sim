@@ -28,7 +28,7 @@ public class ZT_Flower : MonoBehaviour
     public GameObject witheredPrefab;
 
 
-
+    public GameObject dreamRibbon;
 
     void Start()
     {
@@ -43,6 +43,7 @@ public class ZT_Flower : MonoBehaviour
         {
             fullColor = rends[0].material.GetColor(colorProperty);
         }
+        dreamRibbon.SetActive(false);
     }
 
     void Update()
@@ -77,6 +78,8 @@ public class ZT_Flower : MonoBehaviour
             Instantiate(witheredPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+
+        dreamRibbon.SetActive(bloom >= maxBloom && vitality > maxVitality * 0.5f);
 
 
     }
