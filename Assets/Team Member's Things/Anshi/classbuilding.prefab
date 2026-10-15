@@ -261,6 +261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: classbuilding
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 317622fd20823ce4eb770c3705f16d6b, type: 3}
+      propertyPath: m_TagString
+      value: LectureH
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 317622fd20823ce4eb770c3705f16d6b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.49

@@ -20,7 +20,7 @@ public class snap : MonoBehaviour
 
         transform.position = gridManager.CellToWorld(cell);
         
-        if (CompareTag("bookstore"))
+        if (CompareTag("bookstore") || CompareTag("diningj"))
         {
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
