@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1aceb095861bf4cade0b0c3b09cba5, type: 3}
+  m_Name: Locker
+  m_EditorClassIdentifier: Assembly-CSharp::Building_Data
+  buildingName: Wall Locker
+  description: Maximum Research Points ++
+  buildingPrefab: {fileID: 1143034333629715331, guid: b9b81c754027bff45abc0f54154e30c3, type: 3}
+  buildingCosts:
+  - resource: 3
+    cost: 3000
+  menuImage: {fileID: 0}
+  statModifiers:
+  - stat: 2
+    amount: 20
