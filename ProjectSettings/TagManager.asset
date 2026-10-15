@@ -4,8 +4,13 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Defense
-  - Enemy
+  - Zombie
+  - bookstore
+  - diningj
+  - LectureH
+  - final
+  - studyh
+  - studys
   layers:
   - Default
   - TransparentFX
