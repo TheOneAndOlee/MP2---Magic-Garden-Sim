@@ -86,7 +86,9 @@ public class ZT_BuildPlacer : MonoBehaviour
             preview.transform.position = position;
 
             //check status of cell
-            bool canBuild = grid.IsFree(cell) && ZT_Resources.Instance.GetResources(options[currentIndex].costType) >= options[currentIndex].cost;
+            bool canBuild = grid.IsFree(cell) 
+                && ZT_Resources.Instance.GetResources(options[currentIndex].costType) >= options[currentIndex].cost
+                && hit.collider.GetComponent<ZT_BuildArea>() != null;
 
             //show preview
             if (canBuild)
