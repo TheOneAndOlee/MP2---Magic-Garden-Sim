@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class GridManager : MonoBehaviour
+public class GridManager2 : MonoBehaviour
 {
     #region Variables
 

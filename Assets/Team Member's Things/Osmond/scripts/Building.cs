@@ -20,7 +20,7 @@ public class Building : MonoBehaviour
     [SerializeField] private Building_Data building_Data;
 
     private PlayerInventory playerInventory;
-    private GridManager gridManager;
+    private GridManager2 gridManager;
     private Vector2Int buildingCell;
     private bool isDestroying = false;
 
@@ -177,7 +177,7 @@ public class Building : MonoBehaviour
 
     #region Placement Methods
 
-    public void Initialize(Building_Data data, PlayerInventory inventory, GridManager grid, Vector2Int cell)
+    public void Initialize(Building_Data data, PlayerInventory inventory, GridManager2 grid, Vector2Int cell)
     {
         ReleasePlacement();
 
