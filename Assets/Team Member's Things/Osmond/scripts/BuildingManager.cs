@@ -3,13 +3,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(GridManager), typeof(PlayerInventory))]
+[RequireComponent(typeof(GridManager2), typeof(PlayerInventory))]
 public class BuildingManager : MonoBehaviour
 {
     #region Variables and their Getters & Setters
 
     [Header("Building System References")]
-    [SerializeField] private GridManager grid;
+    [SerializeField] private GridManager2 grid;
     [SerializeField] private PlayerInventory inventory;
     [SerializeField] private Transform placementRayOrigin;
     [SerializeField] private Material previewMaterial;
@@ -76,7 +76,7 @@ public class BuildingManager : MonoBehaviour
     {
         if (grid == null)
         {
-            grid = GetComponent<GridManager>();
+            grid = GetComponent<GridManager2>();
         }
 
         if (inventory == null)
