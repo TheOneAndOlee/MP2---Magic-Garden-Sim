@@ -52,8 +52,9 @@ MonoBehaviour:
   - {fileID: 7235897683163703318, guid: a1b1bcb647e1646c79df3801630003a9, type: 3}
   - {fileID: 7235897683163703318, guid: 10977e028410e469ba1d48998e8f9c52, type: 3}
   - {fileID: 7235897683163703318, guid: f9acf98acf78f493d9fe64849a1e7d00, type: 3}
-  explosionRadius: 8
-  baseDamage: 150
+  baseExplosionRadius: 8
+  extraRadiusPerUpgrade: 4
+  baseDamage: 30
 --- !u!1001 &217714760268380383
 PrefabInstance:
   m_ObjectHideFlags: 0
