@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e776a4d83c65e9c4b8051642824f4eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_GridManager
+  cellSize: 1
 --- !u!114 &38972694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb02ef80c5840d48bbbb3d0cbdb4aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_BuildPlacer
-  grid: {fileID: 2144363345}
+  grid: {fileID: 0}
   rayOrigin: {fileID: 2042274288}
   maxDistance: 10
   preview: {fileID: 1598547868}
@@ -963,7 +964,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 1a818d5114a125b4b9f6cda852a1388c, type: 3}
+  m_Resource: {fileID: 8300000, guid: bd88a4632bdd2e542ae0672aa499afaf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
