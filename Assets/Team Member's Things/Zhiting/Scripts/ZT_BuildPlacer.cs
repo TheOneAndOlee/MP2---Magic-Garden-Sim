@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using TMPro;
+using System;
 
 [System.Serializable]
 public class ZT_BuildOption
@@ -9,6 +10,7 @@ public class ZT_BuildOption
     public GameObject prefab;
     public ZT_ResourceType costType;
     public float cost;
+    public ZT_Stage unlockStage = ZT_Stage.BuildTutorial;
 }
 public class ZT_BuildPlacer : MonoBehaviour
 {
@@ -20,7 +22,6 @@ public class ZT_BuildPlacer : MonoBehaviour
     public GameObject preview;
     private Renderer previewRenderer;
 
-    public InputActionReference placeAction;
     public Material validMaterial;
     public Material invalidMaterial;
 
@@ -33,8 +34,26 @@ public class ZT_BuildPlacer : MonoBehaviour
     private bool buildMode = false;
     public InputAction toggleAction = new InputAction(binding: "<XRController>{RightHand}/primaryButton");
 
+    // demolish
+    public InputAction demolishAction = new InputAction(binding: "<XRController>{LeftHand}/primaryButton");
+
+    //place
+    public InputAction placeAction = new InputAction(binding: "<XRController>{RightHand}/triggerPressed");
+
     //displaly
     public TMP_Text buildLabel;
+
+    //event
+    public static event Action<ZT_BuildPlacer> EnterBuild;
+    public static event Action<ZT_BuildPlacer> PlaceBed;
+    public static event Action<ZT_BuildPlacer> Demolish;
+
+    private bool broadcastEnterBuild = false;
+    private bool broadcastPlaceBed = false;
+    private bool broadcastDemolish = false;
+
+    private Dictionary<GameObject, ZT_BuildOption> builtOptions = new Dictionary<GameObject, ZT_BuildOption>();
+
 
     void Start()
     {
@@ -46,19 +65,35 @@ public class ZT_BuildPlacer : MonoBehaviour
     {
         toggleAction.Enable();
         switchAction.Enable();
+        demolishAction.Enable();
+        placeAction.Enable();
     }
 
     void OnDisable()
     {
         toggleAction.Disable();
         switchAction.Disable();
+        demolishAction.Disable();
+        placeAction.Disable();
     }
     void Update()
     {
         //open/close BuildMode
         if (toggleAction.WasPressedThisFrame())
         {
-            buildMode = !buildMode;
+            if (ZT_ProgressManager.Current != null && !ZT_ProgressManager.Current.HasReached(ZT_Stage.BuildTutorial))
+            {
+                Debug.Log("Building unlocks after you harvest your first flower.");
+            }
+            else
+            {
+                buildMode = !buildMode;
+                if (!broadcastEnterBuild)
+                {
+                    broadcastEnterBuild = true;
+                    EnterBuild?.Invoke(this);
+                }
+            }
         }
 
         if (!buildMode)
@@ -86,8 +121,11 @@ public class ZT_BuildPlacer : MonoBehaviour
             preview.transform.position = position;
 
             //check status of cell
-            bool canBuild = grid.IsFree(cell) 
-                && ZT_Resources.Instance.GetResources(options[currentIndex].costType) >= options[currentIndex].cost
+            bool unlocked = ZT_ProgressManager.Current == null || ZT_ProgressManager.Current.HasReached(options[currentIndex].unlockStage);
+            bool enoughResources = ZT_Resources.Instance.GetResources(options[currentIndex].costType) >= options[currentIndex].cost;
+            bool canBuild = unlocked
+                && grid.IsFree(cell)
+                && enoughResources
                 && hit.collider.GetComponent<ZT_BuildArea>() != null;
 
             //show preview
@@ -101,13 +139,61 @@ public class ZT_BuildPlacer : MonoBehaviour
             }
 
             //build
-
-            if (placeAction.action.WasPressedThisFrame() && canBuild)
+            if (placeAction.WasPressedThisFrame())
             {
-                ZT_Resources.Instance.TrySpend(options[currentIndex].costType, options[currentIndex].cost);
-                GameObject building = Instantiate(options[currentIndex].prefab, position, Quaternion.identity);
-                grid.Register(cell, building);
+                if (!unlocked)
+                {
+                    Debug.Log("The Rain Machine unlocks after you harvest 2 flowers.");
+                }
+                else if (!enoughResources)
+                {
+                    Debug.Log("Not enough " + options[currentIndex].costType + " to build this.");
+                }
+                else if (canBuild)
+                {
+                    ZT_Resources.Instance.TrySpend(options[currentIndex].costType, options[currentIndex].cost);
+                    GameObject building = Instantiate(options[currentIndex].prefab, position, Quaternion.identity);
+                    grid.Register(cell, building);
+                    builtOptions[building] = options[currentIndex];
+                    if (!broadcastPlaceBed)
+                    {
+                        broadcastPlaceBed = true;
+                        PlaceBed?.Invoke(this);
+                    }
+                }
+            }
 
+            if (demolishAction.WasPressedThisFrame() && !grid.IsFree(cell))
+            {
+                GameObject target = grid.GetAt(cell);
+
+                ZT_Bed bed = target.GetComponent<ZT_Bed>();
+                if (bed != null && bed.HasFlower)
+                {
+                    Debug.Log("Harvest the flower before removing this bed.");
+                    return;
+                }
+
+                if (builtOptions.TryGetValue(target, out ZT_BuildOption option))
+                {
+
+
+                    ZT_Resources.Instance.AddResources(option.costType, (int)option.cost);
+                    builtOptions.Remove(target);
+                }
+
+                grid.Unregister(cell);
+                Destroy(target);
+
+                if (!broadcastDemolish)
+                {
+                    broadcastDemolish = true;
+                    Demolish?.Invoke(this);
+                }
+                if (ZT_ProgressManager.Current != null)
+                {
+                    ZT_ProgressManager.Current.ReportDemolish();
+                }
             }
         }
         else

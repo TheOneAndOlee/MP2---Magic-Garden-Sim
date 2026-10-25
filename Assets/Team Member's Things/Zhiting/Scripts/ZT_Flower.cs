@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
 public class ZT_Flower : MonoBehaviour
 {
@@ -17,18 +19,24 @@ public class ZT_Flower : MonoBehaviour
     private Renderer[] rends;
 
     //stat:water
-    public float water = 10f;
+    public float water = 5f;
     public float maxWater = 100f;
     public float waterLossRate = 1f;
 
     //stat:vitality
     public float vitality = 100f;
     public float maxVitality = 100f;
-    public float witherRate = 5f;
+    public float witherRate = 2f;
     public GameObject witheredPrefab;
 
 
     public GameObject dreamRibbon;
+    private bool harvested = false;
+
+    public static event Action<ZT_Flower> Bloomed;
+    public static event Action<ZT_Flower> Stalled;
+    private bool broadCastBloomed = false;
+    private bool broadCastStalled = false;
 
     void Start()
     {
@@ -52,18 +60,32 @@ public class ZT_Flower : MonoBehaviour
         water = Mathf.Max(water, 0);
         if (water > 0)
         {
+            broadCastStalled = false;
             if (bloom < maxBloom)
             {
                 bloom += growthRate * Time.deltaTime;
                 bloom = Mathf.Min(bloom, maxBloom);
+                if(bloom >= maxBloom && !broadCastBloomed)
+                {
+                    broadCastBloomed = true;
+                    Bloomed?.Invoke(this);
+                }
             }
             vitality += witherRate * Time.deltaTime;
             vitality = Mathf.Min(vitality, maxVitality);
         }
-        else
+        else 
         {
-            vitality -= witherRate * Time.deltaTime;
-            vitality = Mathf.Max(vitality, 0);
+            if (bloom < maxBloom && !broadCastStalled)
+            {
+                broadCastStalled = true;
+                Stalled?.Invoke(this);
+            }
+            if (ZT_ProgressManager.Current == null || ZT_ProgressManager.Current.HasReached(ZT_Stage.BuildTutorial))
+            {
+                vitality -= witherRate * Time.deltaTime;
+                vitality = Mathf.Max(vitality, 0);
+            }
         }
         float t = bloom / maxBloom;
         float colorT = t * (vitality / maxVitality);
@@ -94,15 +116,23 @@ public class ZT_Flower : MonoBehaviour
         water = Mathf.Min(water, maxWater);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        ZT_Shears shears = other.gameObject.GetComponent<ZT_Shears>();
-        if (bloom == maxBloom && shears != null)
+    //harvest
+        void OnTriggerEnter(Collider other)
         {
-            ZT_Resources.Instance.AddResources(ZT_ResourceType.Flower, 1);
-            ZT_Resources.Instance.AddResources(ZT_ResourceType.Seed, Random.Range(1, 3));
+            ZT_Shears shears = other.gameObject.GetComponent<ZT_Shears>();
+            if (bloom >= maxBloom && shears != null)
+            {
+            if (harvested) return;
+            harvested = true;
+            int seedNumber = Random.Range(1, 3);
+                ZT_Resources.Instance.AddResources(ZT_ResourceType.Flower, 1);
+                ZT_Resources.Instance.AddResources(ZT_ResourceType.Seed, seedNumber);
+            if ((ZT_ProgressManager.Current != null))
+            {
+                ZT_ProgressManager.Current.ReportHarvest(1);
+            }
             Destroy(gameObject);
 
+            }
         }
-    }
 }

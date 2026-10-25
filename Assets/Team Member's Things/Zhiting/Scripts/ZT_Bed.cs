@@ -1,9 +1,11 @@
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
 public class ZT_Bed : MonoBehaviour
 {
     //stat: moisture
-    public float moisture = 50f;
+    public float moisture = 0f;
     public float maxMoisture = 100f;
     public float moistureLossRate = 1f;
 
@@ -20,10 +22,13 @@ public class ZT_Bed : MonoBehaviour
     public Color wetColor = new Color(0.25f, 0.2f, 0.15f);
     private Renderer rend;
 
+    //event
+    public static event Action<ZT_Bed, ZT_Flower> FlowerPlanted;
     void Start()
     {
         rend = GetComponentInChildren<Renderer>();
     }
+    public bool HasFlower => currentFlower != null;
 
     void Update()
     {
@@ -58,6 +63,7 @@ public class ZT_Bed : MonoBehaviour
         if (seed != null && currentFlower == null)
         {
             currentFlower = Instantiate(flowerPrefabs[Random.Range(0, flowerPrefabs.Length)], plantPoint.position, plantPoint.rotation);
+            FlowerPlanted?.Invoke(this, currentFlower);
             Destroy(collision.gameObject);
         }
     }
