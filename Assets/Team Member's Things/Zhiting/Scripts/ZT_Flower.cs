@@ -122,17 +122,21 @@ public class ZT_Flower : MonoBehaviour
             ZT_Shears shears = other.gameObject.GetComponent<ZT_Shears>();
             if (bloom >= maxBloom && shears != null)
             {
-            if (harvested) return;
-            harvested = true;
-            int seedNumber = Random.Range(1, 3);
-                ZT_Resources.Instance.AddResources(ZT_ResourceType.Flower, 1);
-                ZT_Resources.Instance.AddResources(ZT_ResourceType.Seed, seedNumber);
-            if ((ZT_ProgressManager.Current != null))
-            {
-                ZT_ProgressManager.Current.ReportHarvest(1);
-            }
-            Destroy(gameObject);
+                if (harvested) return;
+                harvested = true;
+                int seedNumber = Random.Range(1, 3);
+                    ZT_Resources.Instance.AddResources(ZT_ResourceType.Flower, 1);
+                    ZT_Resources.Instance.AddResources(ZT_ResourceType.Seed, seedNumber);
+                if ((ZT_ProgressManager.Current != null))
+                {
+                    ZT_ProgressManager.Current.ReportHarvest(1);
+                }
+                Destroy(gameObject);
 
             }
-        }
+            else if (shears != null)
+            {
+                ZT_Message.Show("This dream is not finished yet. Wait until the flower is fully bloomed and glowing.");
+            }
+    }
 }

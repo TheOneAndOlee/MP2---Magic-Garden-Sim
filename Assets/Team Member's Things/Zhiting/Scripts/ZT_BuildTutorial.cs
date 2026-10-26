@@ -16,10 +16,10 @@ public class ZT_BuildTutorial : MonoBehaviour
     [SerializeField] private TMP_Text signLabel;
 
     [Header("Step Text")]
-    [TextArea][SerializeField] private string enterBuildText = "You can build now! Press A to enter build mode.";
-    [TextArea][SerializeField] private string placeBedText = "Point at the ground. A green preview means you can build there, red means you can't. Press B to switch between buildings, and pull the trigger to place a Planting Bed.";
-    [TextArea][SerializeField] private string demolishText = "Nice work, your first Planting Bed! Placed something in the wrong spot? Point at the bed and press [demolish button] to remove it. You will get your resources back.";
-    [TextArea][SerializeField] private string doneText = "Look up, a rain cloud is drifting in! Rain falls wherever it passes. Head toward the cloud, your next task is waiting there.";
+    [TextArea][SerializeField] private string enterBuildText = "[Build Tutorial 1/3]: You can build now! Press A to enter build mode.";
+    [TextArea][SerializeField] private string placeBedText = "[Build Tutorial 2/3]: Point at the ground. A green preview means you can build there, red means you can't. Press B to switch between buildings, and pull the trigger to place a Planting Bed.";
+    [TextArea][SerializeField] private string demolishText = "[Build Tutorial 3/3]: Nice work, your first Planting Bed! Placed something in the wrong spot? Point at the bed and press X on your left controller to remove it. You will get your resources back.";
+    [TextArea][SerializeField] private string doneText = "[Build Tutorial] Complete! Head to the other table to start the Cloud Tutorial.";
 
     private void OnEnable()
     {

@@ -2,12 +2,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 
+
 public enum ZT_Stage
 {
     TableTutorial = 0,
     BuildTutorial = 1,
     CloudGarden = 2,
-    RainMachine = 3
+    RainMachine = 3,
+
+    GardenComplete = 4,
 }
 
 
@@ -88,6 +91,7 @@ public class ZT_ProgressManager : MonoBehaviour
                         advanced = true;
                     }
                     break;
+
             }
         }
     }

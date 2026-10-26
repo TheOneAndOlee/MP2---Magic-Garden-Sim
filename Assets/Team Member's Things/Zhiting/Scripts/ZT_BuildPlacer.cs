@@ -83,7 +83,7 @@ public class ZT_BuildPlacer : MonoBehaviour
         {
             if (ZT_ProgressManager.Current != null && !ZT_ProgressManager.Current.HasReached(ZT_Stage.BuildTutorial))
             {
-                Debug.Log("Building unlocks after you harvest your first flower.");
+                ZT_Message.Show("Building unlocks after you harvest your first flower.");
             }
             else
             {
@@ -143,11 +143,11 @@ public class ZT_BuildPlacer : MonoBehaviour
             {
                 if (!unlocked)
                 {
-                    Debug.Log("The Rain Machine unlocks after you harvest 2 flowers.");
+                    ZT_Message.Show("The Rain Machine unlocks after you harvest 2 flowers.");
                 }
                 else if (!enoughResources)
                 {
-                    Debug.Log("Not enough " + options[currentIndex].costType + " to build this.");
+                    ZT_Message.Show("Not enough " + options[currentIndex].costType + " to build this.");
                 }
                 else if (canBuild)
                 {
@@ -170,7 +170,7 @@ public class ZT_BuildPlacer : MonoBehaviour
                 ZT_Bed bed = target.GetComponent<ZT_Bed>();
                 if (bed != null && bed.HasFlower)
                 {
-                    Debug.Log("Harvest the flower before removing this bed.");
+                    ZT_Message.Show("Harvest the flower before removing this bed.");
                     return;
                 }
 

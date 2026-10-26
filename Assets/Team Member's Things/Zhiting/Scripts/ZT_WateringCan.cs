@@ -17,6 +17,10 @@ public class ZT_WateringCan : MonoBehaviour
     public float costPerDrop = 1f;    
     public bool collectRain = false;
 
+    //error message
+    [TextArea] public string emptyMessage = "Your watering can is empty.";
+    private bool warnedEmpty = false;
+
 
     void Update()
     {
@@ -29,10 +33,19 @@ public class ZT_WateringCan : MonoBehaviour
                 timer = 0;
                 if (useResource && !ZT_Resources.Instance.TrySpend(resourceType, costPerDrop))
                 {
+                    if (!warnedEmpty)
+                    {
+                        warnedEmpty = true;
+                        ZT_Message.Show(emptyMessage);
+                    }
                     return;
                 }
                 Instantiate(dropPrefab, spout.position, spout.rotation);
             }
+        }
+        else
+        {
+            warnedEmpty = false;
         }
     }
 }

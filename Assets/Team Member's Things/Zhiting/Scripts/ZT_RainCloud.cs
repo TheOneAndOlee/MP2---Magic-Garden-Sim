@@ -15,7 +15,6 @@ public class ZT_RainCloud : MonoBehaviour
         {
             timer = 0;
 
-            // 在云下方的一个圆形范围内随机选一个点
             Vector2 offset = Random.insideUnitCircle * radius;
             Vector3 position = transform.position + new Vector3(offset.x, -0.5f, offset.y);
 

@@ -24,11 +24,16 @@ public class ZT_Bed : MonoBehaviour
 
     //event
     public static event Action<ZT_Bed, ZT_Flower> FlowerPlanted;
+    public static event Action<ZT_Bed> RainedOn;
+
+    public bool HasFlower => currentFlower != null;
+
+
+
     void Start()
     {
         rend = GetComponentInChildren<Renderer>();
     }
-    public bool HasFlower => currentFlower != null;
 
     void Update()
     {
@@ -55,16 +60,29 @@ public class ZT_Bed : MonoBehaviour
         {
             moisture += drop.waterAmount;
             moisture = Mathf.Min(moisture, maxMoisture);
+            if (drop.isRain)
+            {
+                RainedOn?.Invoke(this);
+            }
             Destroy(collision.gameObject);
             return;
         }
 
         ZT_Seed seed = collision.gameObject.GetComponent<ZT_Seed>();
-        if (seed != null && currentFlower == null)
+        if (seed != null)
         {
-            currentFlower = Instantiate(flowerPrefabs[Random.Range(0, flowerPrefabs.Length)], plantPoint.position, plantPoint.rotation);
-            FlowerPlanted?.Invoke(this, currentFlower);
-            Destroy(collision.gameObject);
+            if (currentFlower == null)
+            {
+                currentFlower = Instantiate(flowerPrefabs[Random.Range(0, flowerPrefabs.Length)], plantPoint.position, plantPoint.rotation);
+                FlowerPlanted?.Invoke(this, currentFlower);
+                seed.Consume();
+            }
+            else
+            {
+                ZT_Message.Show("This bed already has a flower. Sow your seed in an empty bed.");
+                seed.Refund();
+            }
+            
         }
     }
 }

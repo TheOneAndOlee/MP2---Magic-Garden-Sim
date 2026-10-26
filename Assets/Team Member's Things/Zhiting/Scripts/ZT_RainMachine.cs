@@ -4,9 +4,9 @@ using UnityEngine;
 public class ZT_RainMachine : MonoBehaviour
 {
     //stat: storedRain
-    public float storedRain = 50f;
+    public float storedRain = 0f;
     public float maxStoredRain = 100f;
-    public float collectRate = 2f;      
+    public float collectRate = 0f;      
 
     // neighbor watering
     public float waterInterval = 5f;    
