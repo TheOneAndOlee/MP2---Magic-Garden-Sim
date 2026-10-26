@@ -36,6 +36,6 @@ public class MoneyManager : MonoBehaviour
     }
     private void UpdateUI()
     {
-        moneyText.text = "$" + money;
+        moneyText.text ="Flowers Left: " +money;
     }
 }

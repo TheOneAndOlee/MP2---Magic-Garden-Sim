@@ -253,6 +253,30 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 281f82fcf4326a14b93a95275cc06e7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7180252edd56542b9bc9f12395e7e30d, type: 2}
+    - target: {fileID: 2300000, guid: 281f82fcf4326a14b93a95275cc06e7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7180252edd56542b9bc9f12395e7e30d, type: 2}
+    - target: {fileID: 2300000, guid: 281f82fcf4326a14b93a95275cc06e7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7180252edd56542b9bc9f12395e7e30d, type: 2}
+    - target: {fileID: 2300000, guid: 281f82fcf4326a14b93a95275cc06e7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7180252edd56542b9bc9f12395e7e30d, type: 2}
+    - target: {fileID: 2300000, guid: 281f82fcf4326a14b93a95275cc06e7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7180252edd56542b9bc9f12395e7e30d, type: 2}
+    - target: {fileID: 2300000, guid: 281f82fcf4326a14b93a95275cc06e7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7180252edd56542b9bc9f12395e7e30d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -298,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4450a352d955584285ad42da39ab9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::snap
-  gridManager: {fileID: 5190036658156185930, guid: 2bd6aaa563a0d52429c1d692189ae67c, type: 3}
+  gridManager: {fileID: 4956858503135896379, guid: 2bd6aaa563a0d52429c1d692189ae67c, type: 3}
 --- !u!54 &8468199608636695244
 Rigidbody:
   m_ObjectHideFlags: 0

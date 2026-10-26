@@ -4,6 +4,7 @@ using UnityEngine;
 public class GradManager : MonoBehaviour
 {
     public static GradManager Instance;
+            public TextMeshPro nextg;
 
     public int totalGraduated = 0;
     public TextMeshPro graduatedText;
@@ -21,6 +22,8 @@ public class GradManager : MonoBehaviour
     public void AddGraduate()
     {
         totalGraduated++;
+        nextg.text = "Next Goal:\nCreate more graduates to run research labs and arsenal!";
+
         UpdateUI();
     }
 
