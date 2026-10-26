@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class ZT_WateringCan : MonoBehaviour
 {
@@ -17,22 +18,71 @@ public class ZT_WateringCan : MonoBehaviour
     public float costPerDrop = 1f;    
     public bool collectRain = false;
 
+    //error message
+    [TextArea] public string emptyMessage = "Your watering can is empty.";
+    private bool warnedEmpty = false;
+
+    //only pour when grab
+    private XRGrabInteractable grab;
+
+    // one per tilt
+    public bool onePerTilt = false;
+    private bool pouredThisTilt = false;
+
+    void Start()
+    {
+        grab = GetComponent<XRGrabInteractable>();
+    }
+
 
     void Update()
     {
+
+        if (grab != null && !grab.isSelected)
+        {
+            warnedEmpty = false;
+            timer = 0;
+            pouredThisTilt = false;
+            return;
+        }
+
         float currentAngle = Vector3.Angle(transform.up, Vector3.up);
         if (currentAngle >= pourAngle)
         {
+            if (onePerTilt)
+            {
+                if (!pouredThisTilt)
+                {
+                    pouredThisTilt = true;
+                    if (useResource && !ZT_Resources.Instance.TrySpend(resourceType, costPerDrop))
+                    {
+                        ZT_Message.Show(emptyMessage);
+                        return;
+                    }
+                    Instantiate(dropPrefab, spout.position, spout.rotation);
+                }
+                return;
+            }
             timer += Time.deltaTime;
             if (timer >= dropInterval)
             {
                 timer = 0;
                 if (useResource && !ZT_Resources.Instance.TrySpend(resourceType, costPerDrop))
                 {
+                    if (!warnedEmpty)
+                    {
+                        warnedEmpty = true;
+                        ZT_Message.Show(emptyMessage);
+                    }
                     return;
                 }
                 Instantiate(dropPrefab, spout.position, spout.rotation);
             }
+        }
+        else
+        {
+            warnedEmpty = false;
+            pouredThisTilt = false;
         }
     }
 }

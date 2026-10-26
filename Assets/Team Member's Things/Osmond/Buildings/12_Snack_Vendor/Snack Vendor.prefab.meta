@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Team Member's Things/Zhiting/Prefab/Flower_LOD1.prefab.meta
+guid: b7af4ce596a2e974dbc3d6ae4fd11a8d
+========
 guid: 427287694cf57804cb51bfe872d2409c
+>>>>>>>> main:Assets/Team Member's Things/Osmond/Buildings/12_Snack_Vendor/Snack Vendor.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

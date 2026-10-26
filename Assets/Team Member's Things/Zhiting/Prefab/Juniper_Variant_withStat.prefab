@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZT_Flower
   bloom: 0
   maxBloom: 100
-  growthRate: 10
+  growthRate: 6
   grayColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   colorProperty: _RColor
   palette:
@@ -120,13 +120,14 @@ MonoBehaviour:
   - {r: 0.91572046, g: 0.18431371, b: 1, a: 0}
   - {r: 1, g: 0, b: 0.18651617, a: 0}
   - {r: 1, g: 0.805508, b: 0.18431371, a: 0}
-  water: 10
-  maxWater: 100
+  water: 5
+  maxWater: 6
   waterLossRate: 2
   vitality: 100
   maxVitality: 100
   witherRate: 2
   witheredPrefab: {fileID: 1580302831079661917, guid: 999920dc9f676b1469826fdcdcb36aff, type: 3}
+  recoverRate: 25
   dreamRibbon: {fileID: 7326939728359003090}
 --- !u!65 &5907963228340675065
 BoxCollider:
@@ -162,8 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_Tutorial
   tutorialID: Bed
-  message: 'Log #4127: Dream flower detected. Keep it watered or it will fade to
-    gray.'
+  message: Dream flower detected. Keep it watered or it will fade to gray.
   triggerDistance: 1.5
   showDuration: 20
   popup: {fileID: 3552403198776384543}
@@ -176,6 +176,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3693968146653723987}
     m_Modifications:
+    - target: {fileID: 1125036003794146451, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978120358522103304, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7949266218280387131, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
       propertyPath: m_Name
       value: TutorialCanvas
@@ -306,9 +338,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3693968146653723987}
     m_Modifications:
+    - target: {fileID: 527247372897724919, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014703416819044152, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014703416819044152, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014703416819044152, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014703416819044152, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014703416819044152, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014703416819044152, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4238298209264222290, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
       propertyPath: m_Name
       value: DreamRibbon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051661674576276906, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
+      propertyPath: message
+      value: "A dream has fully bloomed. The light rising above it is what remains
+        of someone\u2019s dream. Cut it with the shears to keep it."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501454945386683244, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8106516627334799099, guid: a65e251ffcaf68945a5e53626297cb45, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Team Member's Things/Zhiting/Terrain/Grass.terrainlayer.meta
+guid: 03fda45474cfb154c91717008e7f0779
+========
 guid: 36f8e82df1a8eb4428f936804a109937
+>>>>>>>> main:Assets/Team Member's Things/Osmond/Buildings/13_Microscope/Microscope.asset.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 11400000
+  mainObjectFileID: 8574412962073106934
   userData: 
   assetBundleName: 
   assetBundleVariant: 

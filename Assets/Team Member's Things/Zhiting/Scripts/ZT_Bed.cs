@@ -1,9 +1,11 @@
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
 public class ZT_Bed : MonoBehaviour
 {
     //stat: moisture
-    public float moisture = 50f;
+    public float moisture = 0f;
     public float maxMoisture = 100f;
     public float moistureLossRate = 1f;
 
@@ -20,6 +22,14 @@ public class ZT_Bed : MonoBehaviour
     public Color wetColor = new Color(0.25f, 0.2f, 0.15f);
     private Renderer rend;
 
+    //event
+    public static event Action<ZT_Bed, ZT_Flower> FlowerPlanted;
+    public static event Action<ZT_Bed> RainedOn;
+
+    public bool HasFlower => currentFlower != null;
+
+
+
     void Start()
     {
         rend = GetComponentInChildren<Renderer>();
@@ -33,10 +43,13 @@ public class ZT_Bed : MonoBehaviour
 
         if (currentFlower != null && moisture > 0)
         {
-            moisture -= absorbRate * Time.deltaTime;
-            moisture = Mathf.Max(moisture, 0);
-            currentFlower.water += absorbRate * Time.deltaTime;
-            currentFlower.water = Mathf.Min(currentFlower.water, currentFlower.maxWater);
+            float need = currentFlower.maxWater - currentFlower.water;
+            float amount = Mathf.Min(absorbRate * Time.deltaTime, need, moisture);
+            if (amount > 0)
+            {
+                moisture -= amount;
+                currentFlower.water += amount;
+            }
         }
 
         float t = moisture / maxMoisture;
@@ -50,15 +63,29 @@ public class ZT_Bed : MonoBehaviour
         {
             moisture += drop.waterAmount;
             moisture = Mathf.Min(moisture, maxMoisture);
+            if (drop.isRain)
+            {
+                RainedOn?.Invoke(this);
+            }
             Destroy(collision.gameObject);
             return;
         }
 
         ZT_Seed seed = collision.gameObject.GetComponent<ZT_Seed>();
-        if (seed != null && currentFlower == null)
+        if (seed != null)
         {
-            currentFlower = Instantiate(flowerPrefabs[Random.Range(0, flowerPrefabs.Length)], plantPoint.position, plantPoint.rotation);
-            Destroy(collision.gameObject);
+            if (currentFlower == null)
+            {
+                currentFlower = Instantiate(flowerPrefabs[Random.Range(0, flowerPrefabs.Length)], plantPoint.position, plantPoint.rotation);
+                FlowerPlanted?.Invoke(this, currentFlower);
+                seed.Consume();
+            }
+            else
+            {
+                ZT_Message.Show("This bed already has a flower. Sow your seed in an empty bed.");
+                seed.Refund();
+            }
+            
         }
     }
 }

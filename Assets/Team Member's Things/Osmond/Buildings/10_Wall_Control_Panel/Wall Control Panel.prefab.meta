@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Team Member's Things/Zhiting/Prefab/Bush_LOD1.prefab.meta
+guid: c24d945ef74da0a438afe503a233e9d3
+========
 guid: ec27cd10aa7b394429a966b4562a334e
+>>>>>>>> main:Assets/Team Member's Things/Osmond/Buildings/10_Wall_Control_Panel/Wall Control Panel.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
