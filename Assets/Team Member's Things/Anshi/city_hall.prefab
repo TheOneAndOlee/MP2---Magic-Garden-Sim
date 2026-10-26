@@ -28,9 +28,9 @@ Transform:
   m_GameObject: {fileID: 4646252760304755440}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.96, y: 0.11, z: 1.11}
-  m_LocalScale: {x: 0.43, y: 0.43, z: 0.43}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -0.96, y: 0.24, z: 1.11}
+  m_LocalScale: {x: 0.24, y: 0.34, z: 0.24}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5492139377651026479}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -350,6 +350,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b392c3200ebac344fbc91be43739f8c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 05913bfadb7dd48038b48c80297a2516, type: 2}
+    - target: {fileID: 2300000, guid: b392c3200ebac344fbc91be43739f8c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 05913bfadb7dd48038b48c80297a2516, type: 2}
+    - target: {fileID: 2300000, guid: b392c3200ebac344fbc91be43739f8c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 05913bfadb7dd48038b48c80297a2516, type: 2}
+    - target: {fileID: 2300000, guid: b392c3200ebac344fbc91be43739f8c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 05913bfadb7dd48038b48c80297a2516, type: 2}
+    - target: {fileID: 2300000, guid: b392c3200ebac344fbc91be43739f8c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 05913bfadb7dd48038b48c80297a2516, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -374,7 +394,7 @@ PrefabInstance:
       addedObject: {fileID: 2605441088289767815}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: b392c3200ebac344fbc91be43739f8c0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -3631771024560633972}
+      addedObject: {fileID: 1062100479726953961}
   m_SourcePrefab: {fileID: 100100000, guid: b392c3200ebac344fbc91be43739f8c0, type: 3}
 --- !u!4 &5492139377651026479 stripped
 Transform:
@@ -398,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac5d6477b8b348369f3eb63c6b455ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::dininghall
-  moneyRate: 5
+  moneyRate: 0.5
   revenueText: {fileID: 2837677546484010239}
 --- !u!65 &-8925950170727461301
 BoxCollider:
@@ -578,7 +598,7 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
---- !u!114 &-3631771024560633972
+--- !u!114 &1062100479726953961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -590,4 +610,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4450a352d955584285ad42da39ab9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::snap
-  gridManager: {fileID: 5190036658156185930, guid: 2bd6aaa563a0d52429c1d692189ae67c, type: 3}
+  gridManager: {fileID: 4956858503135896379, guid: 2bd6aaa563a0d52429c1d692189ae67c, type: 3}

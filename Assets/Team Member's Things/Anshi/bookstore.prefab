@@ -351,6 +351,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 273dc094c2a84418e836b4ae28ce2f41, type: 2}
+    - target: {fileID: 2300000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 273dc094c2a84418e836b4ae28ce2f41, type: 2}
+    - target: {fileID: 2300000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 273dc094c2a84418e836b4ae28ce2f41, type: 2}
+    - target: {fileID: 2300000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 273dc094c2a84418e836b4ae28ce2f41, type: 2}
+    - target: {fileID: 2300000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 273dc094c2a84418e836b4ae28ce2f41, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -363,9 +383,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6700354701891365152}
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8657586589170067246}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
       insertIndex: -1
@@ -376,25 +393,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4018045776473593688}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 695365040043686092}
   m_SourcePrefab: {fileID: 100100000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
 --- !u!1 &7193131703856786361 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}
   m_PrefabInstance: {fileID: 7193131703856688409}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6700354701891365152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7193131703856786361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4450a352d955584285ad42da39ab9ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::snap
-  gridManager: {fileID: 5190036658156185930, guid: 2bd6aaa563a0d52429c1d692189ae67c, type: 3}
 --- !u!114 &8657586589170067246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8c7a20c31ed4ff98e7f6eb3549e2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::bookstore
-  moneyRate: 1
+  moneyRate: 0.1
   revenueText: {fileID: 1140735618117997065}
 --- !u!54 &-4320044893646993149
 Rigidbody:
@@ -587,6 +594,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6613104, y: 1.1750572, z: 1.4569564}
   m_Center: {x: 0, y: 0.5875286, z: -0.15110439}
+--- !u!114 &695365040043686092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193131703856786361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4450a352d955584285ad42da39ab9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::snap
+  gridManager: {fileID: 4956858503135896379, guid: 2bd6aaa563a0d52429c1d692189ae67c, type: 3}
 --- !u!4 &7193131703856822169 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 53ec1bd968802e14b997a32f25e4c11c, type: 3}

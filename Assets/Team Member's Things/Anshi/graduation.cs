@@ -6,6 +6,7 @@ public class graduation : MonoBehaviour
     private float timer = 0f;
     public TextMeshPro s;
     public int grads=0;
+
     private void Update()
     {
         if (SMManager.Instance == null ||

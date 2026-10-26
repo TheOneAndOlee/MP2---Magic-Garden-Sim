@@ -6,6 +6,8 @@ MonoImporter:
   defaultReferences:
   - prefabToSpawn: {instanceID: 0}
   - rightHand: {instanceID: 0}
+  - lockedMaterial: {fileID: 2100000, guid: ff8e3266ac54442328bc1d10ec1de15f, type: 2}
+  - unlockedMaterial: {fileID: 2100000, guid: 05913bfadb7dd48038b48c80297a2516, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
