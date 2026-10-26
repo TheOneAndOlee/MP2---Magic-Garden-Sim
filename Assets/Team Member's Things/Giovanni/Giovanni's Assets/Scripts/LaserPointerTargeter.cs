@@ -11,6 +11,7 @@ public class LaserPointerTargeter : MonoBehaviour
     public Transform mainBase; 
     public GameObject previewCylinderPrefab; 
     public StoreItemManager storeManager; 
+    public Transform originalMenuSpot; 
 
     [Header("Status Materials")]
     public Material redFadedMat;
@@ -61,7 +62,20 @@ public class LaserPointerTargeter : MonoBehaviour
 
     void OnDrop(SelectExitEventArgs args)
     {
-        if (hasBeenGrabbed && rb != null)
+        if (originalMenuSpot != null)
+        {
+            transform.position = originalMenuSpot.position;
+            transform.rotation = originalMenuSpot.rotation;
+            
+            if (rb != null)
+            {
+                rb.isKinematic = true;
+                rb.useGravity = false;
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+        }
+        else if (hasBeenGrabbed && rb != null)
         {
             rb.isKinematic = false;
             rb.useGravity = true; 
