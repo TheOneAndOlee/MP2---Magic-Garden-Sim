@@ -43,10 +43,13 @@ public class ZT_Bed : MonoBehaviour
 
         if (currentFlower != null && moisture > 0)
         {
-            moisture -= absorbRate * Time.deltaTime;
-            moisture = Mathf.Max(moisture, 0);
-            currentFlower.water += absorbRate * Time.deltaTime;
-            currentFlower.water = Mathf.Min(currentFlower.water, currentFlower.maxWater);
+            float need = currentFlower.maxWater - currentFlower.water;
+            float amount = Mathf.Min(absorbRate * Time.deltaTime, need, moisture);
+            if (amount > 0)
+            {
+                moisture -= amount;
+                currentFlower.water += amount;
+            }
         }
 
         float t = moisture / maxMoisture;

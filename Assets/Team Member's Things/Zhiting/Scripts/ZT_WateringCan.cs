@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class ZT_WateringCan : MonoBehaviour
 {
@@ -21,12 +22,47 @@ public class ZT_WateringCan : MonoBehaviour
     [TextArea] public string emptyMessage = "Your watering can is empty.";
     private bool warnedEmpty = false;
 
+    //only pour when grab
+    private XRGrabInteractable grab;
+
+    // one per tilt
+    public bool onePerTilt = false;
+    private bool pouredThisTilt = false;
+
+    void Start()
+    {
+        grab = GetComponent<XRGrabInteractable>();
+    }
+
 
     void Update()
     {
+
+        if (grab != null && !grab.isSelected)
+        {
+            warnedEmpty = false;
+            timer = 0;
+            pouredThisTilt = false;
+            return;
+        }
+
         float currentAngle = Vector3.Angle(transform.up, Vector3.up);
         if (currentAngle >= pourAngle)
         {
+            if (onePerTilt)
+            {
+                if (!pouredThisTilt)
+                {
+                    pouredThisTilt = true;
+                    if (useResource && !ZT_Resources.Instance.TrySpend(resourceType, costPerDrop))
+                    {
+                        ZT_Message.Show(emptyMessage);
+                        return;
+                    }
+                    Instantiate(dropPrefab, spout.position, spout.rotation);
+                }
+                return;
+            }
             timer += Time.deltaTime;
             if (timer >= dropInterval)
             {
@@ -46,6 +82,7 @@ public class ZT_WateringCan : MonoBehaviour
         else
         {
             warnedEmpty = false;
+            pouredThisTilt = false;
         }
     }
 }

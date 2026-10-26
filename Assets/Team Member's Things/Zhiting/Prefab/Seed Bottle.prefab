@@ -37,6 +37,7 @@ Transform:
   - {fileID: 6303902198948182893}
   - {fileID: 4802741706567478}
   - {fileID: 4641261677876492}
+  - {fileID: 2037418935688019296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &-2175764039550067185
@@ -249,14 +250,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_WateringCan
   dropPrefab: {fileID: 3889300976376341101, guid: ef9635d78ed52d34badb63b9e386f3ef, type: 3}
-  spout: {fileID: 4641261677876492}
+  spout: {fileID: 2037418935688019296}
   pourAngle: 60
-  dropInterval: 2
+  dropInterval: 0.5
   useResource: 1
   resourceType: 1
   costPerDrop: 1
   collectRain: 0
   emptyMessage: You are out of seeds. Harvest a bloomed flower to get more seeds.
+  onePerTilt: 1
 --- !u!1 &1050389100684470
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +471,37 @@ Transform:
   - {fileID: 4874378374668272}
   m_Father: {fileID: 4436227729660434}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9171743111209420104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037418935688019296}
+  m_Layer: 0
+  m_Name: Spout
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037418935688019296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171743111209420104}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.44050002, z: 0}
+  m_LocalScale: {x: 0.50000006, y: 0.50000006, z: 0.50000006}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4436227729660434}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2894863394468037172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -477,6 +510,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4436227729660434}
     m_Modifications:
+    - target: {fileID: 1125036003794146451, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978120358522103304, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7949266218280387131, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
       propertyPath: m_Name
       value: TutorialCanvas

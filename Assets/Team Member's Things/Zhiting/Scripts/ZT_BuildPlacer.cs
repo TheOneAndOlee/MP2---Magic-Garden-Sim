@@ -160,7 +160,13 @@ public class ZT_BuildPlacer : MonoBehaviour
                         broadcastPlaceBed = true;
                         PlaceBed?.Invoke(this);
                     }
+                    ZT_RainMachine machine = building.GetComponent<ZT_RainMachine>();
+                    if (machine != null)
+                    {
+                        machine.SetGrid(grid, cell);
+                    }
                 }
+
             }
 
             if (demolishAction.WasPressedThisFrame() && !grid.IsFree(cell))

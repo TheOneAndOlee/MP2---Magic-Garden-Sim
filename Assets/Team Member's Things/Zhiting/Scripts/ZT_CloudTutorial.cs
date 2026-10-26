@@ -25,12 +25,14 @@ public class ZT_CloudTutorial : MonoBehaviour
     {
         ZT_Bed.FlowerPlanted += OnFlowerPlanted;
         ZT_Bed.RainedOn += OnBedRainedOn;
+        ZT_Flower.RainedOn += OnFlowerRainedOn;
     }
 
     private void OnDisable()
     {
         ZT_Bed.FlowerPlanted -= OnFlowerPlanted;
         ZT_Bed.RainedOn -= OnBedRainedOn;
+        ZT_Flower.RainedOn -= OnFlowerRainedOn;
     }
 
     void Start()
@@ -69,7 +71,7 @@ public class ZT_CloudTutorial : MonoBehaviour
         }
     }
 
-    // Sandbox 2：有花的花圃第一次被雨淋到，给正反馈
+
     private void OnBedRainedOn(ZT_Bed bed)
     {
         if (currentStep < Step.GrowAndHarvest && bed.HasFlower)
@@ -78,7 +80,14 @@ public class ZT_CloudTutorial : MonoBehaviour
         }
     }
 
-    // 由进度管理器 RainMachine 阶段的 onEnter 调用
+    private void OnFlowerRainedOn(ZT_Flower flower)
+    {
+        if (currentStep < Step.GrowAndHarvest)
+        {
+            SetStep(Step.GrowAndHarvest);
+        }
+    }
+
     public void FinishTutorial()
     {
         SetStep(Step.Done);

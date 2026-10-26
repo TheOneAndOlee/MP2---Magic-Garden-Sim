@@ -20,15 +20,21 @@ public class ZT_RandomSpawner : MonoBehaviour
 
     private float timer;
     private float nextInterval;
+    public float firstSpawnDelay = 2f;
+
+    void OnEnable()
+    {
+        timer = firstSpawnDelay;
+        nextInterval = firstSpawnDelay;
+    }
 
     void Start()
     {
         for (int i = 0; i < startCount; i++)
         {
             SpawnOne();
+            nextInterval = firstSpawnDelay;
         }
-
-        nextInterval = Random.Range(minInterval, maxInterval);
     }
 
     void Update()

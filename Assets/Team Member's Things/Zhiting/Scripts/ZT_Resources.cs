@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ZT_ResourceType { Flower, Seed, Rainwater }
+public enum ZT_ResourceType { Flower, Seed, Rainwater, Graduate }
 public class ZT_Resources : MonoBehaviour
 {
     Dictionary<ZT_ResourceType, float> resources = new Dictionary<ZT_ResourceType, float>();
@@ -9,8 +9,8 @@ public class ZT_Resources : MonoBehaviour
 
     void Start()
     {
-        AddResources(ZT_ResourceType.Seed, 5);
-        AddResources(ZT_ResourceType.Rainwater, 10);
+        AddResources(ZT_ResourceType.Seed, 20);
+        AddResources(ZT_ResourceType.Rainwater, 5);
     }
     
     public float GetResources(ZT_ResourceType type)

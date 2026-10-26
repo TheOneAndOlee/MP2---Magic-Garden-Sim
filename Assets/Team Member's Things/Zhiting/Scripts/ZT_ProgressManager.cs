@@ -60,6 +60,14 @@ public class ZT_ProgressManager : MonoBehaviour
         CheckThresholds();
     }
 
+    public void ReportFullRainMachine()
+    {
+        if (CurrentStage == ZT_Stage.RainMachine)
+        {
+            EnterStage(ZT_Stage.GardenComplete);
+        }
+    }
+
     private void CheckThresholds()
     {
         bool advanced = true;

@@ -297,11 +297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957357e9eb63852408088b28aae8a9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_RainMachine
-  storedRain: 50
-  maxStoredRain: 100
-  collectRate: 1
+  storedRain: 0
+  maxStoredRain: 300
+  collectRate: 0
   waterInterval: 2
-  waterPerBed: 5
+  waterPerBed: 6
   waterLevel: {fileID: 5294002094128527151}
   rainCurtain: {fileID: 3496309491018745965}
   rainDuration: 2
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_Tutorial
   tutorialID: RainMachine
-  message: 'Log #4136: Rain machine. Waters the beds next to it.'
+  message: Rain machine. Waters the beds next to it.
   triggerDistance: 1.5
   showDuration: 20
   popup: {fileID: 834770897959144461}
@@ -471,6 +471,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7076292875510291053}
     m_Modifications:
+    - target: {fileID: 1125036003794146451, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978120358522103304, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7949266218280387131, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
       propertyPath: m_Name
       value: TutorialCanvas

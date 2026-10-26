@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_RainCloud
   dropPrefab: {fileID: 3889300976376341101, guid: 9315b1c0dd6485341b0d0cabb53d81e4, type: 3}
-  dropInterval: 0.1
+  dropInterval: 0.05
   radius: 1.5
 --- !u!114 &1854112443600698454
 MonoBehaviour:

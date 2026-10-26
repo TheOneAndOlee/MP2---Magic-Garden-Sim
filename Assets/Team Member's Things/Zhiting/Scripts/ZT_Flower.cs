@@ -29,14 +29,21 @@ public class ZT_Flower : MonoBehaviour
     public float witherRate = 2f;
     public GameObject witheredPrefab;
 
+    public float recoverRate = 25f;
 
     public GameObject dreamRibbon;
     private bool harvested = false;
 
+    //event
     public static event Action<ZT_Flower> Bloomed;
     public static event Action<ZT_Flower> Stalled;
+    public static event Action<ZT_Flower> RainedOn;
     private bool broadCastBloomed = false;
     private bool broadCastStalled = false;
+
+    //tutorial
+    private bool tutorialWatered = false;
+
 
     void Start()
     {
@@ -56,7 +63,10 @@ public class ZT_Flower : MonoBehaviour
 
     void Update()
     {
-        water -= waterLossRate * Time.deltaTime;
+        if (!tutorialWatered)
+        {
+            water -= waterLossRate * Time.deltaTime;
+        }
         water = Mathf.Max(water, 0);
         if (water > 0)
         {
@@ -71,7 +81,7 @@ public class ZT_Flower : MonoBehaviour
                     Bloomed?.Invoke(this);
                 }
             }
-            vitality += witherRate * Time.deltaTime;
+            vitality += recoverRate * Time.deltaTime;
             vitality = Mathf.Min(vitality, maxVitality);
         }
         else 
@@ -107,9 +117,18 @@ public class ZT_Flower : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
+        
         ZT_WaterDrop drop = collision.gameObject.GetComponent<ZT_WaterDrop>();
         if (drop != null)
         {
+            if (drop.isRain)
+            {
+                RainedOn?.Invoke(this);
+            }
+            if (ZT_ProgressManager.Current != null && !ZT_ProgressManager.Current.HasReached(ZT_Stage.BuildTutorial))
+            {
+                tutorialWatered = true;
+            }
             water += drop.waterAmount;
             Destroy(collision.gameObject);
         }

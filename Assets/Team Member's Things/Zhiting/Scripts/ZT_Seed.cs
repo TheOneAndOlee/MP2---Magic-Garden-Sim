@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ZT_Seed : MonoBehaviour
 {
-    public float lifetime = 5f;
+    public float lifetime = 2f;
     private bool resolved = false;
 
     void Start()
@@ -10,27 +10,12 @@ public class ZT_Seed : MonoBehaviour
         Invoke(nameof(Expire), lifetime);
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (resolved) return;
-
-
-        if (collision.gameObject.GetComponentInParent<ZT_Bed>() != null) return;
-
-        if (collision.gameObject.GetComponentInParent<ZT_WateringCan>() != null) return;
-        if (collision.gameObject.GetComponent<ZT_Seed>() != null) return;
-
-        ZT_Message.Show("Seeds only grow in an empty Planting Bed. The seed went back into your jar.");
-        Refund();
-    }
-
-
     private void Expire()
     {
         if (resolved) return;
+        ZT_Message.Show("Seeds only grow in an empty Planting Bed. The seed went back into your jar.");
         Refund();
     }
-
 
     public void Refund()
     {
