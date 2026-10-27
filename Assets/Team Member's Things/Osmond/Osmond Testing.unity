@@ -1351,6 +1351,7 @@ RectTransform:
   - {fileID: 1559887813}
   - {fileID: 1836554053}
   - {fileID: 1688611636}
+  - {fileID: 1912040007}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1375,6 +1376,7 @@ MonoBehaviour:
   content: {fileID: 1559887813}
   statusText: {fileID: 1836554051}
   convertButton: {fileID: 1688611633}
+  progressionMenu: {fileID: 1912040006}
 --- !u!114 &1892461045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,6 +1396,135 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!1001 &1912040005
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1892461043}
+    m_Modifications:
+    - target: {fileID: 3741908737591685623, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_text
+      value: Place a Retro Terminal to begin!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741908737591685623, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160420741695861364, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 670
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264765984834748974, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_Name
+      value: Research and Achievements
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739721910931557398, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+--- !u!114 &1912040006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6194567139149768591, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+  m_PrefabInstance: {fileID: 1912040005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa4e30fc47056b995b103ec7afcbcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProgressionMenu
+--- !u!224 &1912040007 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7085964899023067077, guid: f1699bff4705c8a44b4854b2ee6f3537, type: 3}
+  m_PrefabInstance: {fileID: 1912040005}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

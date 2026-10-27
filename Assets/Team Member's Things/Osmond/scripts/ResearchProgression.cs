@@ -20,7 +20,7 @@ public class ResearchProgression : MonoBehaviour
 
     public event Action Changed;
     public event Action<int> AchievementEarned;
-    public string CurrentMessage { get; private set; } = "Place a Retro Terminal to begin your building unlock path.";
+    public string CurrentMessage { get; private set; } = "Place a Retro Terminal to get started!";
 
     public ResearchTreeData Tree
     {
@@ -242,7 +242,7 @@ public class ResearchProgression : MonoBehaviour
         }
 
         completedResearch.Add(node.id);
-        Notify("Research complete: " + node.title + ". " + node.description);
+        Notify("Research complete: " + node.title + "! " + node.description);
         Changed?.Invoke();
         CheckAchievements();
         return true;

@@ -12,6 +12,7 @@ public class BuildingMenu : MonoBehaviour
     [SerializeField] private RectTransform content;
     [SerializeField] private TMP_Text statusText;
     [SerializeField] private Button convertButton;
+    [SerializeField] private ProgressionMenu progressionMenu;
     private HashSet<Building_Data> displayedBuildings = new HashSet<Building_Data>();
 
     #endregion
@@ -36,8 +37,10 @@ public class BuildingMenu : MonoBehaviour
         RefreshBuildingChoices();
         buildingManager.Inventory.Progression.Changed += RefreshBuildingChoices;
 
-        ProgressionMenu progressionMenu = gameObject.AddComponent<ProgressionMenu>();
-        progressionMenu.Initialize(buildingManager, GetComponent<Canvas>(), statusText);
+        if (progressionMenu != null)
+        {
+            progressionMenu.Initialize(buildingManager);
+        }
 
         if (convertButton != null)
         {
