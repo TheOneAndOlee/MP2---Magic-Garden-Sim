@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Team Member's Things/Zhiting/Terrain/ZT_Terrain.asset.meta
-guid: 82980d3e49eccbe4b95fa9d19d59fda8
-========
 guid: e2ff2130b3f470640a40e9ad87964a06
->>>>>>>> main:Assets/Team Member's Things/Osmond/Buildings/11_Locker/Locker.asset.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 15600000
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

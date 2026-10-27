@@ -123,8 +123,8 @@ public class BuildingChoice : MonoBehaviour
             return;
         }
 
-        choiceButton.interactable = buildingManager.Inventory.IsAvailable(building_Data)
-            && buildingManager.Inventory.CanAfford(building_Data);
+        // An unaffordable card still accepts a click so the player receives a useful explanation.
+        choiceButton.interactable = true;
     }
 
     public void SelectBuilding()

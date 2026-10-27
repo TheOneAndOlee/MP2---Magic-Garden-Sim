@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class BuildingMenu : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class BuildingMenu : MonoBehaviour
     [SerializeField] private RectTransform content;
     [SerializeField] private TMP_Text statusText;
     [SerializeField] private Button convertButton;
+    [SerializeField] private ProgressionMenu progressionMenu;
+    private HashSet<Building_Data> displayedBuildings = new HashSet<Building_Data>();
 
     #endregion
 
@@ -31,20 +34,25 @@ public class BuildingMenu : MonoBehaviour
         layout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         layout.constraintCount = 3;
 
-        foreach (Building_Data buildingData in buildingManager.Inventory.AvailableBuildings)
-        {
-            if (buildingData == null)
-            {
-                continue;
-            }
+        RefreshBuildingChoices();
+        buildingManager.Inventory.Progression.Changed += RefreshBuildingChoices;
 
-            BuildingChoice buildingChoice = Instantiate(choicePrefab, content);
-            buildingChoice.Configure(buildingData, buildingManager);
+        if (progressionMenu != null)
+        {
+            progressionMenu.Initialize(buildingManager);
         }
 
         if (convertButton != null)
         {
             convertButton.onClick.AddListener(ConvertResearch);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (buildingManager != null && buildingManager.Inventory != null && buildingManager.Inventory.Progression != null)
+        {
+            buildingManager.Inventory.Progression.Changed -= RefreshBuildingChoices;
         }
     }
 
@@ -56,6 +64,21 @@ public class BuildingMenu : MonoBehaviour
     #endregion
 
     #region Menu Methods
+
+    private void RefreshBuildingChoices()
+    {
+        foreach (Building_Data data in buildingManager.Inventory.AvailableBuildings)
+        {
+            if (data == null || displayedBuildings.Contains(data) || !buildingManager.Inventory.IsAvailable(data))
+            {
+                continue;
+            }
+
+            BuildingChoice choice = Instantiate(choicePrefab, content);
+            choice.Configure(data, buildingManager);
+            displayedBuildings.Add(data);
+        }
+    }
 
     private void UpdateStatusText()
     {
@@ -75,7 +98,7 @@ public class BuildingMenu : MonoBehaviour
         string resources = "Funds: " + funds + " | Research: " + progress + "/" + maximumProgress;
         resources += " | Points: " + points + "/" + maximumPoints;
 
-        string stats = "Output: " + inventory.ResearchOutput.ToString("0.0") + "/s";
+        string stats = "Output: " + inventory.ResearchPerSecond.ToString("0.0") + "/s";
         stats += " | Funds: +" + inventory.ResearchFundsOutput.ToString("0.0") + "/s";
         stats += " | Efficiency: " + inventory.ResearchEfficiency.ToString("0.0") + "%";
         stats += " | Morale: " + inventory.Morale.ToString("0.0");
@@ -87,7 +110,14 @@ public class BuildingMenu : MonoBehaviour
 
     public void ConvertResearch()
     {
-        buildingManager.Inventory.TryConvertResearch();
+        if (!buildingManager.Inventory.TryConvertResearch())
+        {
+            buildingManager.Inventory.Progression.Notify("Cannot convert yet: check your RPP, funds, and Research Point capacity.", true);
+        }
+        else
+        {
+            buildingManager.Inventory.Progression.CheckAchievements();
+        }
     }
 
     #endregion

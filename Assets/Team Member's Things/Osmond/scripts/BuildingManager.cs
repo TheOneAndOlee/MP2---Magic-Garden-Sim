@@ -188,8 +188,23 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectBuilding(Building_Data data)
     {
-        if (!inventory.IsAvailable(data) || data.buildingPrefab == null)
+        if (data == null || data.buildingPrefab == null)
         {
+            return;
+        }
+
+        if (!inventory.IsAvailable(data))
+        {
+            CancelPlacement();
+            ShowFailure("Building locked. " + inventory.Progression.BuildingRequirement(data));
+            return;
+        }
+
+        if (!inventory.CanAfford(data))
+        {
+            CancelPlacement();
+            ShowFailure("Not enough resources to build " + data.buildingName
+                + ". Check its menu card: pizza produces funds and research buildings produce RPP.");
             return;
         }
 
@@ -245,6 +260,18 @@ public class BuildingManager : MonoBehaviour
         building = null;
         Vector2Int cell = grid.WorldToCell(worldPosition);
 
+        if (selectedBuilding != null && !inventory.IsAvailable(selectedBuilding))
+        {
+            ShowFailure("Building locked. " + inventory.Progression.BuildingRequirement(selectedBuilding));
+            return false;
+        }
+
+        if (selectedBuilding != null && !inventory.CanAfford(selectedBuilding))
+        {
+            ShowFailure("Not enough resources to build " + selectedBuilding.buildingName + ". Earn more funds first.");
+            return false;
+        }
+
         if (!CanPlace(selectedBuilding, cell))
         {
             Status = "Cannot build here: check the cell, obstacles, and resources.";
@@ -273,6 +300,7 @@ public class BuildingManager : MonoBehaviour
 
             building = placedObject.GetComponent<Building>();
             building.Initialize(selectedBuilding, inventory, grid, cell);
+            inventory.Progression.RecordPlacement(selectedBuilding);
             Status = "Placed " + selectedBuilding.buildingName + ".";
 
             return true;
@@ -295,6 +323,12 @@ public class BuildingManager : MonoBehaviour
     #endregion
 
     #region Random Building Spawns
+
+    private void ShowFailure(string message)
+    {
+        Status = message;
+        inventory.Progression.Notify(message, true);
+    }
 
     private void SpawnStartingBuilding()
     {
