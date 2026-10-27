@@ -138,9 +138,9 @@ public class spawn : MonoBehaviour
         }
         else
         {
-            if (!MoneyManager.Instance.SpendMoney(cost))
+            if (!MoneyManager.Instance.SpendFlower(cost))
             {
-                Debug.Log("Not enough money!");
+                Debug.Log("Not enough Flower!");
                 return;
             }
             GameObject obj = Instantiate(
