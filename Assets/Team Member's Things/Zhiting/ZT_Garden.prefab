@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7626877136185985895}
-  - component: {fileID: 2636566525058443094}
   - component: {fileID: 4168226366364714660}
   m_Layer: 0
   m_Name: Build Placer
@@ -33,19 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1669652335260931511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2636566525058443094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18426496989429104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e776a4d83c65e9c4b8051642824f4eda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ZT_GridManager
-  cellSize: 1
 --- !u!114 &4168226366364714660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb02ef80c5840d48bbbb3d0cbdb4aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_BuildPlacer
-  grid: {fileID: 874257098915771026}
+  grid: {fileID: 3621815011936682878}
   rayOrigin: {fileID: 0}
   maxDistance: 10
   preview: {fileID: 1886023244462904508}
@@ -69,10 +55,12 @@ MonoBehaviour:
     costType: 0
     cost: 0
     unlockStage: 1
+    needsGraduate: 0
   - prefab: {fileID: 3392762201355051374, guid: 573fbf0282f7ce149979d45390ef1956, type: 3}
-    costType: 3
-    cost: 0
+    costType: 0
+    cost: 2
     unlockStage: 3
+    needsGraduate: 1
   switchAction:
     m_Name: Switch
     m_Type: 0
@@ -146,6 +134,7 @@ MonoBehaviour:
     m_Flags: 0
     m_Priority: 0
   buildLabel: {fileID: 0}
+  graduatesPerMachine: 3
 --- !u!1 &107844584965540252
 GameObject:
   m_ObjectHideFlags: 0
@@ -3447,7 +3436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7181200053157832337}
-  - component: {fileID: 874257098915771026}
+  - component: {fileID: 3621815011936682878}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -3470,7 +3459,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1669652335260931511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &874257098915771026
+--- !u!114 &3621815011936682878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3479,7 +3468,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6136591548677333412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e776a4d83c65e9c4b8051642824f4eda, type: 3}
+  m_Script: {fileID: 11500000, guid: eaf6eee020d34482ab6566c80870e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridManager
   cellSize: 1
