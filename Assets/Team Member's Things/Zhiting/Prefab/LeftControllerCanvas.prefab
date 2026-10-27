@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 6011010293464065606}
   - component: {fileID: 7869926830855444689}
   - component: {fileID: 119183222917639334}
+  - component: {fileID: 4999864425477957559}
   m_Layer: 0
   m_Name: LeftControllerCanvas
   m_TagString: Untagged
@@ -436,7 +437,7 @@ RectTransform:
   m_GameObject: {fileID: 3846575466766355725}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_LocalScale: {x: 0.0010000002, y: 0.0010000002, z: 0.0010000003}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3061985884722843824}
@@ -493,7 +494,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &119183222917639334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,6 +512,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4999864425477957559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3846575466766355725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5671cc2b47a8574dbda47596204490f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZT_FollowTarget
+  target: {fileID: 0}
+  positionOffset: {x: 0, y: 0.1092, z: 0.04159999}
+  rotationOffset: {x: 45, y: 0, z: 0}
 --- !u!1 &5769495751940388306
 GameObject:
   m_ObjectHideFlags: 0
