@@ -32,6 +32,29 @@ public class Building : MonoBehaviour
         get => building_Data;
     }
 
+    public GridManager2 Grid
+    {
+        get => gridManager;
+    }
+
+    public Vector2Int Cell
+    {
+        get => buildingCell;
+    }
+
+    public float CurrentDecayRate
+    {
+        get
+        {
+            if (BuildingNeighbors.PreventsDecay(this))
+            {
+                return 0f;
+            }
+
+            return Mathf.Max(0f, decayRate);
+        }
+    }
+
     public bool IsAlive
     {
         get => !isDestroying && health > 0f;
@@ -106,7 +129,7 @@ public class Building : MonoBehaviour
             return;
         }
 
-        float healthLost = Mathf.Max(0f, decayRate) * Mathf.Max(0f, seconds);
+        float healthLost = CurrentDecayRate * Mathf.Max(0f, seconds);
         health = Mathf.Clamp(health - healthLost, 0f, maxHealth);
         RefreshPresentation();
 

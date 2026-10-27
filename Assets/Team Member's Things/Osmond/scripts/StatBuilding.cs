@@ -52,6 +52,11 @@ public abstract class StatBuilding : MonoBehaviour
             }
         }
 
+        if (this is DrinkDispenser && BuildingNeighbors.HasNeighbor<SnackVendor>(Building))
+        {
+            modifierAmount *= 2f;
+        }
+
         // Negative cost/threshold bonuses also become weaker as health drops.
         return modifierAmount * Building.EfficacyMultiplier;
     }

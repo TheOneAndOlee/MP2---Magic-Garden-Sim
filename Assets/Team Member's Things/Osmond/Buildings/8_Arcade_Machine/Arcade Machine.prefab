@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Building
   health: 200
   maxHealth: 200
-  decayRate: 4
+  decayRate: 0
   smokeFX: {fileID: 2098665656867578381}
   healthText: {fileID: 2365126764148519955}
   building_Data: {fileID: 11400000, guid: 6812d9cace4cabf4a818e866578c250f, type: 2}

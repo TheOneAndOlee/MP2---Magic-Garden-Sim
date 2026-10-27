@@ -32,5 +32,8 @@ public class Building_Data : ScriptableObject
     public Image menuImage;
     public List<StatModifier> statModifiers = new List<StatModifier>();
 
+    [Tooltip("Place each of these buildings at least once to unlock this building.")]
+    public List<Building_Data> requiredBuildings = new List<Building_Data>();
+
     #endregion
 }

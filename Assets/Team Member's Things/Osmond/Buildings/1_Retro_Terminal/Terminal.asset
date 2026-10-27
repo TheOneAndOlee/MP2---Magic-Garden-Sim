@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Terminal
   m_EditorClassIdentifier: Assembly-CSharp::Building_SO
   buildingName: Retro Terminal
-  description: Research Output +++
+  description: Research Output +
   buildingPrefab: {fileID: 5678005075880140256, guid: 52104e882f0a8c949a9cc75a8338180a, type: 3}
   buildingCosts:
-  - resource: 2
+  - resource: 3
     cost: 500
   menuImage: {fileID: 0}
   statModifiers:
