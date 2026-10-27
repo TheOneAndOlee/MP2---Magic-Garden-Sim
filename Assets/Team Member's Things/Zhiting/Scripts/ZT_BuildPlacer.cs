@@ -11,6 +11,7 @@ public class ZT_BuildOption
     public ZT_ResourceType costType;
     public float cost;
     public ZT_Stage unlockStage = ZT_Stage.BuildTutorial;
+    public bool needsGraduate = false;  
 }
 public class ZT_BuildPlacer : MonoBehaviour
 {
@@ -54,6 +55,9 @@ public class ZT_BuildPlacer : MonoBehaviour
 
     private Dictionary<GameObject, ZT_BuildOption> builtOptions = new Dictionary<GameObject, ZT_BuildOption>();
 
+    // get graduate
+    private GradManager gradManager;
+    [SerializeField] private int graduatesPerMachine = 1;
 
     void Start()
     {
@@ -76,8 +80,40 @@ public class ZT_BuildPlacer : MonoBehaviour
         demolishAction.Disable();
         placeAction.Disable();
     }
+
+
+    private int GetTotalGraduates()
+    {
+        if (gradManager == null)
+        {
+            gradManager = FindAnyObjectByType<GradManager>();
+        }
+        if (gradManager == null) return 0;
+        return gradManager.totalGraduated;
+    }
+
+
+    private int GetAllowedMachines()
+    {
+        return GetTotalGraduates() / Mathf.Max(1, graduatesPerMachine);
+    }
+
+    private int CountStaffedBuildings()
+    {
+        int count = 0;
+        foreach (var pair in builtOptions)
+        {
+            if (pair.Key != null && pair.Value.needsGraduate) count++;
+        }
+        return count;
+    }
+
+  
+
+
     void Update()
     {
+
         //open/close BuildMode
         if (toggleAction.WasPressedThisFrame())
         {
@@ -102,7 +138,22 @@ public class ZT_BuildPlacer : MonoBehaviour
             buildLabel.text = "";
             return;
         }
-        buildLabel.text = "Building: " + options[currentIndex].prefab.name;
+
+        ZT_BuildOption opt = options[currentIndex];
+        string label = "Building: " + opt.prefab.name;
+
+        if (opt.cost > 0)
+        { 
+            label += "\nCost: " + opt.cost + " " + opt.costType;
+        }
+
+        if (opt.needsGraduate)
+        {
+            label += "\nRain Machines: " + CountStaffedBuildings() + " / " + GetAllowedMachines()
+                + " (" + GetTotalGraduates() + " graduates, every " + graduatesPerMachine + " allow 1)";
+        }
+
+        buildLabel.text = label;
 
         //switch building
         if (switchAction.WasPressedThisFrame())
@@ -122,7 +173,9 @@ public class ZT_BuildPlacer : MonoBehaviour
 
             //check status of cell
             bool unlocked = ZT_ProgressManager.Current == null || ZT_ProgressManager.Current.HasReached(options[currentIndex].unlockStage);
-            bool enoughResources = ZT_Resources.Instance.GetResources(options[currentIndex].costType) >= options[currentIndex].cost;
+            bool enoughGraduates = !options[currentIndex].needsGraduate || CountStaffedBuildings() < GetAllowedMachines();
+            bool enoughResources = enoughGraduates
+                && ZT_Resources.Instance.GetResources(options[currentIndex].costType) >= options[currentIndex].cost;
             bool canBuild = unlocked
                 && grid.IsFree(cell)
                 && enoughResources
@@ -145,9 +198,14 @@ public class ZT_BuildPlacer : MonoBehaviour
                 {
                     ZT_Message.Show("The Rain Machine unlocks after you harvest 2 flowers.");
                 }
+                else if (!enoughGraduates)
+                {
+                    ZT_Message.Show("You can run " + GetAllowedMachines() + " Rain Machine(s) with " + GetTotalGraduates() + " graduates. Every " + graduatesPerMachine + " graduates from the School allow one more.");
+                }
                 else if (!enoughResources)
                 {
                     ZT_Message.Show("Not enough " + options[currentIndex].costType + " to build this.");
+
                 }
                 else if (canBuild)
                 {
