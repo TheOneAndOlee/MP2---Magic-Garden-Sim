@@ -16,11 +16,30 @@ public class PlayerInventory : MonoBehaviour
     [Header("Default Research Stats")]
     [SerializeField, Min(1)] private float baseMaximumResearchProgress = 1000f;
     [SerializeField, Min(1)] private float baseMaximumResearchPoints = 100f;
-    [SerializeField, Min(1)] private float baseResearchPointThreshold = 100f;
+    [SerializeField, Min(1)] private float baseResearchPointThreshold = 500f;
     [SerializeField, Min(0)] private float baseResearchConversionFunds = 25f;
 
     // A HashSet prevents the same building from adding its bonuses more than once.
     private HashSet<StatBuilding> buildings = new HashSet<StatBuilding>();
+
+    public ResearchProgression Progression { get; private set; }
+
+    public float ResearchPerSecond
+    {
+        get
+        {
+            int boostedBuildings = 0;
+            foreach (StatBuilding building in buildings)
+            {
+                if (building != null && building.isActiveAndEnabled && BuildingNeighbors.BoostsResearch(building.Building))
+                {
+                    boostedBuildings++;
+                }
+            }
+
+            return ResearchOutput * ResearchEfficiency * 0.01f * (1f + boostedBuildings * 0.05f);
+        }
+    }
 
     public IReadOnlyList<Building_Data> AvailableBuildings
     {
@@ -68,7 +87,19 @@ public class PlayerInventory : MonoBehaviour
         get
         {
             float reduction = GetModifier(SimResource.StatType.ResearchPointThreshold);
-            return Mathf.Max(1f, baseResearchPointThreshold + reduction);
+            float threshold = baseResearchPointThreshold + reduction;
+            foreach (StatBuilding building in buildings)
+            {
+                if (building is GasCylinder && building.isActiveAndEnabled
+                    && BuildingNeighbors.HasNeighbor<Capsule>(building.Building))
+                {
+                    // This bonus applies once, even when there are several gas/capsule pairs.
+                    threshold *= 0.95f;
+                    break;
+                }
+            }
+
+            return Mathf.Max(1f, threshold);
         }
     }
 
@@ -118,6 +149,12 @@ public class PlayerInventory : MonoBehaviour
         {
             AddResource(resource.resource, resource.cost);
         }
+
+        Progression = GetComponent<ResearchProgression>();
+        if (Progression == null)
+        {
+            Progression = gameObject.AddComponent<ResearchProgression>();
+        }
     }
 
     private void Update()
@@ -131,8 +168,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void Tick(float seconds)
     {
-        float researchPerSecond = ResearchOutput * ResearchEfficiency * 0.01f;
-        float researchGained = researchPerSecond * Mathf.Max(0f, seconds);
+        float researchGained = ResearchPerSecond * Mathf.Max(0f, seconds);
         AddResource(SimResource.ResourceType.ResearchProgressPoints, researchGained);
 
         float fundsGained = ResearchFundsOutput * Mathf.Max(0f, seconds);
@@ -200,7 +236,8 @@ public class PlayerInventory : MonoBehaviour
 
     public bool IsAvailable(Building_Data data)
     {
-        return data != null && availableBuildings.Contains(data);
+        return data != null && availableBuildings.Contains(data)
+            && (Progression == null || Progression.IsBuildingUnlocked(data));
     }
 
     public void Register(StatBuilding building)
@@ -237,6 +274,31 @@ public class PlayerInventory : MonoBehaviour
     #endregion
 
     #region Building Purchase Methods
+
+    public int CountBuildings<T>() where T : StatBuilding
+    {
+        int count = 0;
+        foreach (StatBuilding building in buildings)
+        {
+            if (building is T && building.isActiveAndEnabled && building.Building.IsAlive)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public bool TrySpendResource(SimResource.ResourceType resource, float amount)
+    {
+        if (float.IsNaN(amount) || float.IsInfinity(amount) || amount < 0f || GetAmount(resource) < amount)
+        {
+            return false;
+        }
+
+        Inventory[resource] = GetAmount(resource) - amount;
+        return true;
+    }
 
     private bool TryGetCosts(Building_Data data, out Dictionary<SimResource.ResourceType, float> costs)
     {

@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840dff82fa9458a8955bd67e130728cd, type: 3}
+  m_Name: Research Tree
+  m_EditorClassIdentifier: Assembly-CSharp::ResearchTreeData
+  nodes:
+  - id: bow
+    title: "Bow"
+    description: "Completes Bow research and reveals the Shooter Towers research branch."
+    researchPointCost: 2
+    prerequisites: []
+    militaryType: 0
+    upgradeLevel: 0
+  - id: tower
+    title: "Shooter Towers"
+    description: "Completes Shooter Towers research and reveals the Mobile Turrets research branch."
+    researchPointCost: 5
+    prerequisites:
+    - bow
+    militaryType: 1
+    upgradeLevel: 0
+  - id: tower-1
+    title: "Shooter Towers 1"
+    description: "Completes rank 1 research for shooter towers."
+    researchPointCost: 4
+    prerequisites:
+    - tower
+    militaryType: 1
+    upgradeLevel: 1
+  - id: tower-2
+    title: "Shooter Towers 2"
+    description: "Completes rank 2 research for shooter towers."
+    researchPointCost: 8
+    prerequisites:
+    - tower-1
+    militaryType: 1
+    upgradeLevel: 2
+  - id: tower-3
+    title: "Shooter Towers 3"
+    description: "Completes rank 3 research for shooter towers."
+    researchPointCost: 12
+    prerequisites:
+    - tower-2
+    militaryType: 1
+    upgradeLevel: 3
+  - id: mobile
+    title: "Mobile Turrets"
+    description: "Completes Mobile Turrets research and reveals the Air Support research branch."
+    researchPointCost: 8
+    prerequisites:
+    - tower
+    militaryType: 2
+    upgradeLevel: 0
+  - id: mobile-1
+    title: "Mobile Turrets 1"
+    description: "Completes rank 1 research for mobile turrets."
+    researchPointCost: 6
+    prerequisites:
+    - mobile
+    militaryType: 2
+    upgradeLevel: 1
+  - id: mobile-2
+    title: "Mobile Turrets 2"
+    description: "Completes rank 2 research for mobile turrets."
+    researchPointCost: 12
+    prerequisites:
+    - mobile-1
+    militaryType: 2
+    upgradeLevel: 2
+  - id: mobile-3
+    title: "Mobile Turrets 3"
+    description: "Completes rank 3 research for mobile turrets."
+    researchPointCost: 18
+    prerequisites:
+    - mobile-2
+    militaryType: 2
+    upgradeLevel: 3
+  - id: air
+    title: "Air Support"
+    description: "Completes Air Support research and reveals the Air Strikes research branch."
+    researchPointCost: 12
+    prerequisites:
+    - mobile
+    militaryType: 3
+    upgradeLevel: 0
+  - id: air-1
+    title: "Air Support 1"
+    description: "Completes rank 1 research for air support."
+    researchPointCost: 8
+    prerequisites:
+    - air
+    militaryType: 3
+    upgradeLevel: 1
+  - id: air-2
+    title: "Air Support 2"
+    description: "Completes rank 2 research for air support."
+    researchPointCost: 16
+    prerequisites:
+    - air-1
+    militaryType: 3
+    upgradeLevel: 2
+  - id: air-3
+    title: "Air Support 3"
+    description: "Completes rank 3 research for air support."
+    researchPointCost: 24
+    prerequisites:
+    - air-2
+    militaryType: 3
+    upgradeLevel: 3
+  - id: strike
+    title: "Air Strikes"
+    description: "Completes the final research branch and makes its three research ranks available."
+    researchPointCost: 20
+    prerequisites:
+    - air
+    militaryType: 4
+    upgradeLevel: 0
+  - id: strike-1
+    title: "Air Strikes 1"
+    description: "Completes rank 1 research for air strikes."
+    researchPointCost: 10
+    prerequisites:
+    - strike
+    militaryType: 4
+    upgradeLevel: 1
+  - id: strike-2
+    title: "Air Strikes 2"
+    description: "Completes rank 2 research for air strikes."
+    researchPointCost: 20
+    prerequisites:
+    - strike-1
+    militaryType: 4
+    upgradeLevel: 2
+  - id: strike-3
+    title: "Air Strikes 3"
+    description: "Completes rank 3 research for air strikes."
+    researchPointCost: 30
+    prerequisites:
+    - strike-2
+    militaryType: 4
+    upgradeLevel: 3

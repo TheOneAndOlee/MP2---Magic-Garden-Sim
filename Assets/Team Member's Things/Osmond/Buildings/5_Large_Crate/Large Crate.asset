@@ -22,3 +22,5 @@ MonoBehaviour:
   statModifiers:
   - stat: 1
     amount: 20
+  requiredBuildings:
+  - {fileID: 11400000, guid: 871c97c9588247a408c65a351fc841b6, type: 2}

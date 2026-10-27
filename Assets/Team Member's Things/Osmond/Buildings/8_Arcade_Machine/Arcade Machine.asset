@@ -21,4 +21,7 @@ MonoBehaviour:
   menuImage: {fileID: 0}
   statModifiers:
   - stat: 4
-    amount: 20
+    amount: 50
+  requiredBuildings:
+  - {fileID: 11400000, guid: 593218457d144bf469826f9999c7ff1b, type: 2}
+  - {fileID: 11400000, guid: 4905d159e707a434785bfe8325b16684, type: 2}

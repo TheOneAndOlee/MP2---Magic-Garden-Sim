@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba1aceb095861bf4cade0b0c3b09cba5, type: 3}
-  m_Name: Computer Panel
+  m_Name: Small Monitor
   m_EditorClassIdentifier: Assembly-CSharp::Building_Data
-  buildingName: Computer Panel
-  description: Research Output +++
-  buildingPrefab: {fileID: 5233006353902838768, guid: 8d0815e864cd626448f537fd3f43b16b, type: 3}
+  buildingName: Small Monitor
+  description: Research Output ++
+  buildingPrefab: {fileID: 11542941198755674, guid: b7be1bae3b774c8438ed2e2172d17c97, type: 3}
   buildingCosts:
   - resource: 3
-    cost: 2000
+    cost: 1000
   menuImage: {fileID: 0}
   statModifiers:
   - stat: 0
-    amount: 30
+    amount: 45
+  requiredBuildings:
+  - {fileID: 11400000, guid: 3ea030ff1d6bbc944afddcadc5c48ce7, type: 2}
