@@ -10895,28 +10895,20 @@ MonoBehaviour:
   achievementButtons:
   - achievementIndex: 0
     label: {fileID: 4154723946876586398}
-    trophy: {fileID: 2653159209719476078}
   - achievementIndex: 1
     label: {fileID: 4024220925376638344}
-    trophy: {fileID: 4340752014193788999}
   - achievementIndex: 2
     label: {fileID: 5908450089671281293}
-    trophy: {fileID: 358794139504542834}
   - achievementIndex: 3
     label: {fileID: 7382902411879085857}
-    trophy: {fileID: 9184063196447903100}
   - achievementIndex: 4
     label: {fileID: 1644341805701179489}
-    trophy: {fileID: 7646742708332663263}
   - achievementIndex: 5
     label: {fileID: 2274546488430073598}
-    trophy: {fileID: 5403309867940709210}
   - achievementIndex: 6
     label: {fileID: 8639108870920398181}
-    trophy: {fileID: 2431868507990905460}
   - achievementIndex: 7
     label: {fileID: 3251206501139793115}
-    trophy: {fileID: 5617049823253371274}
   completedColor: {r: 0.12, g: 0.38, b: 0.24, a: 1}
   readyColor: {r: 0.12, g: 0.32, b: 0.46, a: 1}
   lockedColor: {r: 0.2, g: 0.21, b: 0.24, a: 1}

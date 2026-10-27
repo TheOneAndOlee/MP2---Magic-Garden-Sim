@@ -24,7 +24,6 @@ public class ProgressionMenu : MonoBehaviour
     {
         public int achievementIndex;
         public TMP_Text label;
-        public GameObject trophy;
     }
 
     [Header("Scene Connection")]
@@ -160,7 +159,6 @@ public class ProgressionMenu : MonoBehaviour
             item.label.text = (earned ? "EARNED\n" : "LOCKED\n")
                 + ResearchProgression.AchievementNames[item.achievementIndex];
             item.label.color = earned ? earnedTextColor : lockedTextColor;
-            item.trophy.SetActive(earned);
         }
     }
 
