@@ -27,8 +27,8 @@ public class zombiespawn : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Zombie").Length >= maxZombies)
             return;
 
-        float randomX = Random.Range(-9.8f, 9.8f);
-    float randomZ = Random.Range(-9.8f, 9.8f);
+        float randomX = Random.Range(-5f, 10f);
+    float randomZ = Random.Range(-50f, -68f);
 
     Vector3 spawnPosition = new Vector3(randomX, 0f, randomZ);
 
