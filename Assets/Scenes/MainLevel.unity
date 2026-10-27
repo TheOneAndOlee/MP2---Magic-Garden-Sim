@@ -251,6 +251,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &615411004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7739663800319150195, guid: 122dbec2698bf7244941b4cb2b87067c, type: 3}
+  m_PrefabInstance: {fileID: 1098358472}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &781004936 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3798531671663081531, guid: 6ca8c224613d0463d811487c95871661, type: 3}
@@ -703,7 +714,7 @@ PrefabInstance:
     - target: {fileID: 4168226366364714660, guid: 122dbec2698bf7244941b4cb2b87067c, type: 3}
       propertyPath: buildLabel
       value: 
-      objectReference: {fileID: 1228415485}
+      objectReference: {fileID: 615411004}
     - target: {fileID: 4294117467314822544, guid: 122dbec2698bf7244941b4cb2b87067c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -981,17 +992,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 122dbec2698bf7244941b4cb2b87067c, type: 3}
---- !u!114 &1228415485 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7075019553473994289, guid: 122dbec2698bf7244941b4cb2b87067c, type: 3}
-  m_PrefabInstance: {fileID: 1098358472}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1490216798
 PrefabInstance:
   m_ObjectHideFlags: 0
