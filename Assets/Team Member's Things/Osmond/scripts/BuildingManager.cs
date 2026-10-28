@@ -46,9 +46,10 @@ public class BuildingManager : MonoBehaviour
     private int rotationSteps;
     private bool canConfirmPlacement = false;
 
-    private InputAction placeAction;
-    private InputAction cancelAction;
-    private InputAction rotateAction;
+    [Tooltip("Controls for the Building System")]
+    [SerializeField] private InputAction placeAction;
+    [SerializeField] private InputAction cancelAction;
+    [SerializeField] private InputAction rotateAction;
 
     private NearFarInteractor nearFarInteractor;
     private XRRayInteractor rayInteractor;
@@ -83,10 +84,6 @@ public class BuildingManager : MonoBehaviour
         {
             inventory = GetComponent<PlayerInventory>();
         }
-
-        placeAction = new InputAction("Place building", InputActionType.Button, "<XRController>{RightHand}/triggerPressed");
-        cancelAction = new InputAction("Cancel building", InputActionType.Button, "<XRController>{RightHand}/secondaryButton");
-        rotateAction = new InputAction("Rotate building", InputActionType.Button, "<XRController>{RightHand}/primaryButton");
     }
 
     private void Start()
@@ -442,7 +439,7 @@ public class BuildingManager : MonoBehaviour
 
         foreach (NearFarInteractor interactor in nearFarInteractors)
         {
-            if (IsRightHand(interactor.transform))
+            if (IsLeftHand(interactor.transform))
             {
                 nearFarInteractor = interactor;
                 break;
@@ -453,7 +450,7 @@ public class BuildingManager : MonoBehaviour
 
         foreach (XRRayInteractor interactor in rayInteractors)
         {
-            if (IsRightHand(interactor.transform))
+            if (IsLeftHand(interactor.transform))
             {
                 rayInteractor = interactor;
                 break;
@@ -473,13 +470,13 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    private static bool IsRightHand(Transform target)
+    private static bool IsLeftHand(Transform target)
     {
         Transform currentParent = target;
 
         while (currentParent != null)
         {
-            if (currentParent.name.Contains("Right"))
+            if (currentParent.name.Contains("Left"))
             {
                 return true;
             }
