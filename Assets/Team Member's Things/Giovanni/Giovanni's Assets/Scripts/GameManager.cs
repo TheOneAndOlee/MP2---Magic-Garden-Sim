@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [Header("Invasion Settings")]
     public float alienSpawnRate = 3.0f; 
     public int aliensPerSpawn = 1; 
+    public int maxAliensPerSpawn = 40; // The hard cap to prevent crashes
     public float alienSpeedMultiplier = 1.0f; 
 
     void Awake()
@@ -64,9 +65,10 @@ public class GameManager : MonoBehaviour
     {
         aliensPerSpawn *= 4;
         
+        // Clamps the value so it never exceeds your max limit
+        aliensPerSpawn = Mathf.Min(aliensPerSpawn, maxAliensPerSpawn);
+        
         alienSpawnRate = Mathf.Max(0.5f, alienSpawnRate - 0.2f);
-
-        // Reverted to the flat 15% increase per escalation
         alienSpeedMultiplier += 0.15f; 
         
         Debug.Log("Escalation triggered! Spawning " + aliensPerSpawn + " aliens at " + alienSpeedMultiplier + "x speed!");

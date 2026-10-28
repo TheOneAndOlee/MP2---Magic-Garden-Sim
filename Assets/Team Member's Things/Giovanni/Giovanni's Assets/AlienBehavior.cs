@@ -24,6 +24,25 @@ public class AlienBehavior : MonoBehaviour
     public float health = 100f; 
     public int killReward = 100; 
 
+    [Header("Audio Settings")]
+    public AudioClip deathSound;
+    public AudioClip idleLoopSound; 
+    private AudioSource loopSource;
+
+    void Start()
+    {
+        if (idleLoopSound != null)
+        {
+            loopSource = gameObject.AddComponent<AudioSource>();
+            loopSource.clip = idleLoopSound;
+            loopSource.loop = true;
+            loopSource.spatialBlend = 1f; 
+            loopSource.maxDistance = 20f; 
+            loopSource.rolloffMode = AudioRolloffMode.Linear;
+            loopSource.Play();
+        }
+    }
+
     public void SetMainBase(Transform baseTransform)
     {
         mainBase = baseTransform;
@@ -35,10 +54,8 @@ public class AlienBehavior : MonoBehaviour
         float randomScale = Random.Range(minSize, maxSize);
         transform.localScale = new Vector3(randomScale, randomScale, randomScale);
 
-        // Calculate the base random speed first
         float baseSpeed = Random.Range(minSpeed, maxSpeed);
 
-        // Apply the exponential speed boost from the GameManager
         if (GameManager.Instance != null)
         {
             currentSpeed = baseSpeed * GameManager.Instance.alienSpeedMultiplier;
@@ -61,6 +78,8 @@ public class AlienBehavior : MonoBehaviour
 
         foreach (GameObject barricade in barricades)
         {
+            if (barricade == null) continue;
+
             float distance = Vector3.Distance(transform.position, barricade.transform.position);
             if (distance < closestDistance)
             {
@@ -96,7 +115,7 @@ public class AlienBehavior : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("Alien is touching: " + other.gameObject.name + " with tag: " + other.gameObject.tag);
+        if (other == null || other.gameObject == null) return;
 
         if (other.gameObject.CompareTag("Defense"))
         {
@@ -104,16 +123,16 @@ public class AlienBehavior : MonoBehaviour
             
             if (Time.time >= nextAttackTime)
             {
-                Barricade barricade = other.gameObject.GetComponent<Barricade>();
+                BarrierHealth barrier = other.gameObject.GetComponent<BarrierHealth>();
                 
-                if (barricade != null)
+                if (barrier != null)
                 {
-                    Debug.Log("Barricade found! Subtracting health.");
-                    barricade.health -= (int)attackDamage; 
+                    Debug.Log("BarrierHealth found! Dealing damage.");
+                    barrier.TakeDamage((int)attackDamage); 
                 }
                 else
                 {
-                    Debug.LogWarning("Touched a Defense object, but it has no Barricade script attached!");
+                    Debug.LogWarning("Touched a Defense object, but it has no BarrierHealth script attached!");
                 }
                 
                 nextAttackTime = Time.time + attackRate; 
@@ -123,6 +142,8 @@ public class AlienBehavior : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        if (other == null || other.gameObject == null) return;
+
         if (other.gameObject.CompareTag("Defense"))
         {
             isAttacking = false; 
@@ -135,6 +156,11 @@ public class AlienBehavior : MonoBehaviour
         health -= damageAmount;
         if (health <= 0)
         {
+            if (deathSound != null)
+            {
+                AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            }
+
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.AddCurrency(killReward);

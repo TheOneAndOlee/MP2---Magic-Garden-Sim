@@ -21,6 +21,9 @@ public class TankLaserShooter : MonoBehaviour
     [Tooltip("Slot 0 = Base Level. Slots 1-3 = Upgrades")]
     public Material[] upgradeLaserMaterials; 
 
+    [Header("Audio Settings")]
+    public AudioClip shootSound; 
+
     private Transform target;
 
     void Awake()
@@ -92,6 +95,11 @@ public class TankLaserShooter : MonoBehaviour
         laserLine.SetPosition(0, firePoint.position);
         laserLine.SetPosition(1, target.position);
         laserLine.enabled = true;
+
+        if (shootSound != null)
+        {
+            AudioSource.PlayClipAtPoint(shootSound, firePoint.position);
+        }
 
         target.SendMessage("TakeDamage", calculatedDamage, SendMessageOptions.DontRequireReceiver);
 

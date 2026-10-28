@@ -19,6 +19,9 @@ public class AircraftShooter : MonoBehaviour
     [Tooltip("Slot 0 = Base Level. Slots 1-3 = Upgrades")]
     public Material[] upgradeBulletMaterials; 
 
+    [Header("Audio Settings")]
+    public AudioClip shootSound;
+
     private Transform target;
 
     void Update()
@@ -79,6 +82,11 @@ public class AircraftShooter : MonoBehaviour
             int calculatedDamage = baseDamage + (level * damagePerUpgrade);
             
             projectile.Initialize(target, upgradeBulletMaterials[safeIndex], calculatedDamage);
+        }
+
+        if (shootSound != null)
+        {
+            AudioSource.PlayClipAtPoint(shootSound, firePoint.position);
         }
     }
 }

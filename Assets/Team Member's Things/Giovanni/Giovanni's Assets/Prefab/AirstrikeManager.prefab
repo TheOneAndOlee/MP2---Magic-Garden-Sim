@@ -55,6 +55,7 @@ MonoBehaviour:
   baseExplosionRadius: 8
   extraRadiusPerUpgrade: 4
   baseDamage: 30
+  bombSound: {fileID: 8300000, guid: 2ec86ac4601e84367bd6713f7783593d, type: 3}
 --- !u!1001 &217714760268380383
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ public class AirstrikeController : MonoBehaviour
     public float extraRadiusPerUpgrade = 4f; 
     public int baseDamage = 150; 
 
+    [Header("Audio Settings")]
+    public AudioClip bombSound;
+
     private Vector3 targetPosition;
     private Vector3 startPos;
     private Vector3 endPos;
@@ -80,6 +83,11 @@ public class AirstrikeController : MonoBehaviour
             {
                 GameObject blast = Instantiate(selectedExplosion, blastPos, Quaternion.identity);
                 blast.transform.localScale = Vector3.one * (totalRadius / baseExplosionRadius);
+            }
+
+            if (bombSound != null)
+            {
+                AudioSource.PlayClipAtPoint(bombSound, blastPos);
             }
             
             Collider[] hitColliders = Physics.OverlapSphere(blastPos, totalRadius);

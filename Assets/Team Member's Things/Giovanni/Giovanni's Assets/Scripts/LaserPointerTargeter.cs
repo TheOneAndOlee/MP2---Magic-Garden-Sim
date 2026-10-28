@@ -24,7 +24,10 @@ public class LaserPointerTargeter : MonoBehaviour
 
     [Header("Targeting Rules")]
     public float minSafeDistance = 15f; 
+    
+    [Header("Audio Settings")]
     public AudioClip errorSound;
+    public AudioClip flybySound;
 
     private AudioSource audioSource;
     private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabInteractable;
@@ -162,6 +165,12 @@ public class LaserPointerTargeter : MonoBehaviour
         
         GameObject lockedPreview = currentPreview;
         currentPreview = null; 
+        
+        if (flybySound != null)
+        {
+            AudioSource.PlayClipAtPoint(flybySound, lockedPreview.transform.position);
+        }
+
         Destroy(lockedPreview, 5f); 
         
         if (airstrikeManagerPrefab != null)

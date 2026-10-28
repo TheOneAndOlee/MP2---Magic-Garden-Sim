@@ -11,6 +11,9 @@ public class TentRadar : MonoBehaviour
     
     private int currentBowIndex = 0; 
 
+    [Header("Audio Settings")]
+    public AudioClip shootSound; 
+
     void Update()
     {
         fireTimer -= Time.deltaTime;
@@ -39,6 +42,12 @@ public class TentRadar : MonoBehaviour
         GameObject newArrow = Instantiate(arrowPrefab, bow.position, bow.rotation);
         ArrowArc arrowScript = newArrow.GetComponent<ArrowArc>();
         if (arrowScript != null) arrowScript.target = target;
+        
+        // Play the shooting sound at the specific bow's location
+        if (shootSound != null)
+        {
+            AudioSource.PlayClipAtPoint(shootSound, bow.position);
+        }
         
         // 3. Move to the next bow in line. If we hit the end, loop back to the first bow.
         currentBowIndex++;
