@@ -172,3 +172,4 @@ LightingData.asset     binary
 
 # Terrain data is binary, do not convert line endings
 **/ZT_Terrain.asset     binary
+**/TintingDemo_Terrain.asset binary
