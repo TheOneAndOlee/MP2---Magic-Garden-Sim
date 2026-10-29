@@ -1,0 +1,36 @@
+{
+    "version": 1,
+    "name": "IA_Research",
+    "maps": [
+        {
+            "name": "GiveGrad",
+            "id": "eb96b0fe-1f56-4fca-a498-623a5b37e736",
+            "actions": [
+                {
+                    "name": "GiveGrad",
+                    "type": "Button",
+                    "id": "2dd426cf-2532-4af5-8340-cbd9ea9e3940",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0d3161e7-acde-492c-9574-7f3042bcae83",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GiveGrad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

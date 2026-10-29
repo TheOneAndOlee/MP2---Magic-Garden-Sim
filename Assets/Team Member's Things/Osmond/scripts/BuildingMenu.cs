@@ -100,7 +100,7 @@ public class BuildingMenu : MonoBehaviour
 
         string stats = "Output: " + inventory.ResearchPerSecond.ToString("0.0") + "/s";
         stats += " | Funds: +" + inventory.ResearchFundsOutput.ToString("0.0") + "/s";
-        stats += " | Efficiency: " + inventory.ResearchEfficiency.ToString("0.0") + "%";
+        stats += " | Efficiency: " + inventory.ResearchEfficiency.ToString("100.0") + "%";
         stats += " | Morale: " + inventory.Morale.ToString("0.0");
         stats += " | Convert: " + inventory.ResearchPointThreshold.ToString("0.0") + " research";
         stats += " + " + inventory.ResearchConversionFunds.ToString("0.0") + " funds";

@@ -277,7 +277,7 @@ public class ResearchProgression : MonoBehaviour
         Award(0, allResearch);
         Award(1, inventory.ResearchPerSecond > 100f);
         Award(2, inventory.GetAmount(SimResource.ResourceType.ResearchPoints) >= inventory.MaximumResearchPoints);
-        Award(3, inventory.ResearchEfficiency > 150f);
+        Award(3, inventory.ResearchEfficiency > 250f);
         Award(4, allBuildings);
         Award(5, inventory.Morale > 300f);
         Award(6, inventory.CountBuildings<ComputerPanel>() > inventory.CountBuildings<Terminal_Building>()

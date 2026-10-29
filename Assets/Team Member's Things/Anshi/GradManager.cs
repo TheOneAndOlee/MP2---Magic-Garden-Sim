@@ -1,8 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GradManager : MonoBehaviour
 {
+    public UnityEvent FiftyGrads;
+
     public static GradManager Instance;
             public TextMeshPro nextg;
 
@@ -23,6 +26,11 @@ public class GradManager : MonoBehaviour
     {
         totalGraduated++;
         nextg.text = "Next Goal:\nCreate more graduates to run research labs and arsenal!";
+
+        if (totalGraduated >= 50)
+        {
+            FiftyGrads.Invoke();
+        }
 
         UpdateUI();
     }

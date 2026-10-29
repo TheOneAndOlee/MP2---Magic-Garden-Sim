@@ -24,6 +24,14 @@ public class PlayerInventory : MonoBehaviour
 
     public ResearchProgression Progression { get; private set; }
 
+    public int GradCount
+    {
+        get
+        {
+            return GradManager.Instance != null ? GradManager.Instance.totalGraduated : 0;
+        } 
+    }
+
     public float ResearchPerSecond
     {
         get
@@ -37,7 +45,7 @@ public class PlayerInventory : MonoBehaviour
                 }
             }
 
-            return ResearchOutput * ResearchEfficiency * 0.01f * (1f + boostedBuildings * 0.05f);
+            return ResearchOutput * (ResearchEfficiency - 100) * 0.01f * (1f + boostedBuildings * 0.05f);
         }
     }
 
@@ -117,7 +125,7 @@ public class PlayerInventory : MonoBehaviour
         get
         {
             float bonus = GetModifier(SimResource.StatType.ResearchEfficiency);
-            return Mathf.Max(0f, 100f + bonus);
+            return Mathf.Max(GradCount * 2, 200f + bonus);
         }
     }
 
@@ -163,6 +171,9 @@ public class PlayerInventory : MonoBehaviour
     }
 
     #endregion
+
+    //#region GraduateMethods
+    ////private 
 
     #region Research and Resource Methods
 
