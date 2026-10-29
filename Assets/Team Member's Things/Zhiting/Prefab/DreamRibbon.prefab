@@ -175,8 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_Tutorial
   tutorialID: DreamRibbon
-  message: "Log #4151: A dream has fully bloomed. The light rising above it is what
-    remains of someone\u2019s dream. Cut it with the shears to keep it."
+  message: "A dream has fully bloomed. The light rising above it is what remains
+    of someone\u2019s dream. Cut it with the shears to keep it."
   triggerDistance: 1.5
   showDuration: 20
   popup: {fileID: 709066585761877444}
@@ -196,6 +196,38 @@ PrefabInstance:
     - target: {fileID: 336140278638044775, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
       propertyPath: m_fontSizeBase
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125036003794146451, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978120358522103304, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607310593744027847, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949266218280387131, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
       propertyPath: m_Name
@@ -275,11 +307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.4864
+      value: -0.1715
       objectReference: {fileID: 0}
     - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.419
+      value: -0.022
       objectReference: {fileID: 0}
     - target: {fileID: 9175920748266568025, guid: c02f339198e28ed44bfac89724f0bb83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
