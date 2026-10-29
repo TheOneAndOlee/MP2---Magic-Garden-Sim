@@ -44,6 +44,8 @@ public class ZT_Flower : MonoBehaviour
     //tutorial
     private bool tutorialWatered = false;
 
+    [HideInInspector] public ZT_Bed bed;
+
 
     void Start()
     {
@@ -107,7 +109,11 @@ public class ZT_Flower : MonoBehaviour
         }
         if (vitality == 0)
         {
-            Instantiate(witheredPrefab, transform.position, transform.rotation);
+            GameObject withered = Instantiate(witheredPrefab, transform.position, transform.rotation);
+            if (bed != null)
+            {
+                bed.SetWithered(withered); 
+            }
             Destroy(gameObject);
         }
 

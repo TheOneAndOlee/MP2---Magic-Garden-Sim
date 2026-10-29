@@ -15,7 +15,8 @@ public class ZT_Bed : MonoBehaviour
 
     public ZT_Flower[] flowerPrefabs;   
     public Transform plantPoint;        
-    private ZT_Flower currentFlower;   
+    private ZT_Flower currentFlower;
+    private GameObject witheredFlower;
 
     // color
     public Color dryColor = new Color(0.55f, 0.5f, 0.45f);
@@ -26,7 +27,7 @@ public class ZT_Bed : MonoBehaviour
     public static event Action<ZT_Bed, ZT_Flower> FlowerPlanted;
     public static event Action<ZT_Bed> RainedOn;
 
-    public bool HasFlower => currentFlower != null;
+    public bool HasFlower => currentFlower != null || witheredFlower != null;
 
 
 
@@ -56,6 +57,12 @@ public class ZT_Bed : MonoBehaviour
         rend.material.color = Color.Lerp(dryColor, wetColor, t);
     }
 
+    public void SetWithered(GameObject withered)
+    {
+        witheredFlower = withered;
+    }
+
+
     void OnCollisionEnter(Collision collision)
     {
         ZT_WaterDrop drop = collision.gameObject.GetComponent<ZT_WaterDrop>();
@@ -74,9 +81,15 @@ public class ZT_Bed : MonoBehaviour
         ZT_Seed seed = collision.gameObject.GetComponent<ZT_Seed>();
         if (seed != null)
         {
-            if (currentFlower == null)
+            if (witheredFlower != null) 
+            {
+                ZT_Message.Show("A withered flower is still in this bed. Cut it with your sickle first, then sow a new seed.");
+                seed.Refund();
+            }
+            else if (currentFlower == null)
             {
                 currentFlower = Instantiate(flowerPrefabs[Random.Range(0, flowerPrefabs.Length)], plantPoint.position, plantPoint.rotation);
+                currentFlower.bed = this;
                 FlowerPlanted?.Invoke(this, currentFlower);
                 seed.Consume();
             }
