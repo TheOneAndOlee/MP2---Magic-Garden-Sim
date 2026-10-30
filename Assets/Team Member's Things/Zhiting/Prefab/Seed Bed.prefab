@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZT_Tutorial
   tutorialID: Bed
-  message: 'Log #4131: Planting bed. Drop seeds here to grow a dream.'
+  message: Planting bed. Drop seeds here to grow a dream.
   triggerDistance: 1.5
   showDuration: 20
   popup: {fileID: 2563838916327643534}

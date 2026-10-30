@@ -231,7 +231,7 @@ public class ZT_BuildPlacer : MonoBehaviour
             {
                 GameObject target = grid.GetAt(cell);
 
-                ZT_Bed bed = target.GetComponent<ZT_Bed>();
+                ZT_Bed bed = target.GetComponentInChildren<ZT_Bed>();
                 if (bed != null && bed.HasFlower)
                 {
                     ZT_Message.Show("Harvest the flower before removing this bed.");
