@@ -2,25 +2,17 @@ using UnityEngine;
 
 public class BarrierHealth : MonoBehaviour
 {
-    [Header("Barrier Stats")]
+    [Header("Health Settings")]
     public int maxHealth = 500;
     private int currentHealth;
 
-    [Header("Effects")]
-    public GameObject destructionEffect;
-    public AudioClip breakSound;
-    private AudioSource audioSource;
+    [Header("Destruction Effects")]
+    public AudioClip destructionSound;
+    public GameObject destructionParticles;
 
     void Start()
     {
         currentHealth = maxHealth;
-        audioSource = GetComponent<AudioSource>();
-        
-        // Add an AudioSource if one is missing but a sound is assigned
-        if (audioSource == null && breakSound != null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
     }
 
     public void TakeDamage(int damageAmount)
@@ -29,22 +21,25 @@ public class BarrierHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            BreakBarrier();
+            TriggerDestruction();
         }
     }
 
-    private void BreakBarrier()
+    private void TriggerDestruction()
     {
-        if (destructionEffect != null)
+        // Play the destruction sound at the barricade's location
+        if (destructionSound != null)
         {
-            Instantiate(destructionEffect, transform.position, transform.rotation);
+            AudioSource.PlayClipAtPoint(destructionSound, transform.position);
         }
 
-        if (breakSound != null)
+        // Spawn the destruction particle effect
+        if (destructionParticles != null)
         {
-            AudioSource.PlayClipAtPoint(breakSound, transform.position);
+            Instantiate(destructionParticles, transform.position, transform.rotation);
         }
 
+        // Delete the barricade
         Destroy(gameObject);
     }
 }
