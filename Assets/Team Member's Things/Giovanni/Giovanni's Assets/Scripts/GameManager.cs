@@ -7,16 +7,19 @@ public class GameManager : MonoBehaviour
 
     [Header("Currency Settings")]
     public int currentCurrency = 0;
-    public TextMeshProUGUI currencyText; 
+    public TextMeshProUGUI currencyText;
 
     [Header("Progression")]
     public int globalUpgradeTier = 1;
 
     [Header("Invasion Settings")]
-    public float alienSpawnRate = 3.0f; 
-    public int aliensPerSpawn = 1; 
-    public int maxAliensPerSpawn = 40; // The hard cap to prevent crashes
-    public float alienSpeedMultiplier = 1.0f; 
+    public float alienSpawnRate = 3.0f;
+    public int aliensPerSpawn = 1;
+    public int maxAliensPerSpawn = 40;
+    public float alienSpeedMultiplier = 1.0f;
+
+    [Header("Game State")]
+    public bool wavesActive = false;
 
     void Awake()
     {
@@ -33,6 +36,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateCurrencyDisplay();
+        wavesActive = false;
+    }
+
+    public void BeginAlienWaves()
+    {
+        if (!wavesActive)
+        {
+            wavesActive = true;
+            Debug.Log("Barricade crossed! Waves are now ACTIVE.");
+        }
     }
 
     public void AddCurrency(int amount)
@@ -47,10 +60,10 @@ public class GameManager : MonoBehaviour
         {
             currentCurrency -= amount;
             UpdateCurrencyDisplay();
-            return true; 
+            return true;
         }
-        
-        return false; 
+
+        return false;
     }
 
     private void UpdateCurrencyDisplay()
@@ -64,13 +77,12 @@ public class GameManager : MonoBehaviour
     public void IncreaseAlienSpawns()
     {
         aliensPerSpawn *= 4;
-        
-        // Clamps the value so it never exceeds your max limit
+
         aliensPerSpawn = Mathf.Min(aliensPerSpawn, maxAliensPerSpawn);
-        
+
         alienSpawnRate = Mathf.Max(0.5f, alienSpawnRate - 0.2f);
-        alienSpeedMultiplier += 0.15f; 
-        
+        alienSpeedMultiplier += 0.15f;
+
         Debug.Log("Escalation triggered! Spawning " + aliensPerSpawn + " aliens at " + alienSpeedMultiplier + "x speed!");
     }
 }

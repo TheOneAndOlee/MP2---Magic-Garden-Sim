@@ -4,25 +4,31 @@ public class AlienSpawner : MonoBehaviour
 {
     public GameObject alienPrefab;
     public Transform mainBase;
-    
+
     [Header("Spawn Settings")]
     public float baseSpawnInterval = 4f;
     private float spawnTimer = 0f;
 
     void Update()
     {
+        // NEW: Stop the timer and spawning if waves are not active yet
+        if (GameManager.Instance != null && !GameManager.Instance.wavesActive)
+        {
+            return;
+        }
+
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0f)
         {
             Spawn();
-            
+
             // 1. Get current tier from GameManager
             int currentTier = 0;
             if (GameManager.Instance != null)
             {
                 currentTier = GameManager.Instance.globalUpgradeTier;
             }
-            
+
             // 2. Shrink interval as tiers go up (minimum 1 second)
             float currentInterval = Mathf.Max(1f, baseSpawnInterval - (currentTier * 0.6f));
             spawnTimer = currentInterval;
@@ -33,9 +39,9 @@ public class AlienSpawner : MonoBehaviour
     {
         Bounds bounds = GetComponent<Collider>().bounds;
         Vector3 randomPos = new Vector3(Random.Range(bounds.min.x, bounds.max.x), transform.position.y + 1f, Random.Range(bounds.min.z, bounds.max.z));
-        
+
         GameObject newAlien = Instantiate(alienPrefab, randomPos, Quaternion.identity);
-        
+
         // Pass the base reference and initialize the tiered stats
         AlienBehavior behavior = newAlien.GetComponent<AlienBehavior>();
         if (behavior != null)
