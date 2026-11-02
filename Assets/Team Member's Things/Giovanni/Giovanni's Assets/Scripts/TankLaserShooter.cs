@@ -5,24 +5,25 @@ using System.Collections;
 public class TankLaserShooter : MonoBehaviour
 {
     [Header("Dependencies")]
-    public StoreItemManager storeManager; 
-    public Transform firePoint; 
+    public StoreItemManager storeManager;
+    public Transform firePoint;
     private LineRenderer laserLine;
 
     [Header("Combat Stats")]
     public float range = 15f;
-    public float fireRate = 1f; 
+    public float fireRate = 1f;
     public int baseDamage = 10;
     public int damagePerUpgrade = 10;
     private float fireCountdown = 0f;
-    public string enemyTag = "Enemy"; 
+    public string enemyTag = "Enemy";
 
     [Header("Upgrade Visuals")]
     [Tooltip("Slot 0 = Base Level. Slots 1-3 = Upgrades")]
-    public Material[] upgradeLaserMaterials; 
+    public Material[] upgradeLaserMaterials;
 
     [Header("Audio Settings")]
-    public AudioClip shootSound; 
+    public AudioClip shootSound;
+    [Range(0f, 1f)] public float shootVolume = 0.5f;
 
     private Transform target;
 
@@ -30,7 +31,7 @@ public class TankLaserShooter : MonoBehaviour
     {
         laserLine = GetComponent<LineRenderer>();
         laserLine.enabled = false;
-        
+
         laserLine.positionCount = 2;
         laserLine.startWidth = 0.1f;
         laserLine.endWidth = 0.1f;
@@ -98,13 +99,14 @@ public class TankLaserShooter : MonoBehaviour
 
         if (shootSound != null)
         {
-            AudioSource.PlayClipAtPoint(shootSound, firePoint.position);
+            // Use the new shootVolume variable to control the loudness
+            AudioSource.PlayClipAtPoint(shootSound, firePoint.position, shootVolume);
         }
 
         target.SendMessage("TakeDamage", calculatedDamage, SendMessageOptions.DontRequireReceiver);
 
         yield return new WaitForSeconds(0.1f);
-        
+
         laserLine.enabled = false;
     }
 }

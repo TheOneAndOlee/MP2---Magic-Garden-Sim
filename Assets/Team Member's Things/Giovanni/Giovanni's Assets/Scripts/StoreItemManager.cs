@@ -3,13 +3,6 @@ using UnityEngine.UI;
 
 public class StoreItemManager : MonoBehaviour
 {
-    [Header("Teammate Integration")]
-    public ResearchProgression researchManager;
-    [Tooltip("The exact string ID from the ResearchTreeData needed to unlock the base item.")]
-    public string requiredResearchID = "";
-    [Tooltip("The string IDs needed to unlock each upgrade level (e.g., tower-1).")]
-    public string[] upgradeResearchIDs = new string[3];
-
     [Header("Hierarchy Models")]
     public GameObject lockedModel;
     public GameObject unlockedModel;
@@ -25,127 +18,104 @@ public class StoreItemManager : MonoBehaviour
     public Material redMaterial;
     public Material greenMaterial;
 
-    [Header("Costs")]
+    [Header("Costs (Alien USD)")]
     public int purchaseCost = 1000;
     public int[] upgradeCosts = new int[3];
 
     [HideInInspector] public bool isPlacedOnGrid = false;
     public int currentUpgradeLevel = 0;
-    private bool isUpgraded = false;
-    private bool itemPermanentlyUnlocked = false;
+
+    private bool isResearchedInTree = false;
+    private bool[] isUpgradeResearchedInTree = new bool[3];
 
     void Start()
     {
-        UpdateUnlockState();
-
         foreach (MeshRenderer sphere in statusSpheres)
         {
             if (sphere != null) sphere.material = redMaterial;
         }
         if (upgradeButton != null) upgradeButton.interactable = false;
+
+        UpdateModels();
     }
 
     void Update()
     {
-        if (isUpgraded && currentUpgradeLevel >= statusSpheres.Length) return;
-
-        if (isPlacedOnGrid)
+        if (!isPlacedOnGrid)
         {
-            itemPermanentlyUnlocked = true;
-            if (lockedModel != null && lockedModel.activeSelf) lockedModel.SetActive(false);
-        }
-        else if (!itemPermanentlyUnlocked)
-        {
-            UpdateUnlockState();
+            UpdateModels();
         }
 
-        if (currentUpgradeLevel >= statusSpheres.Length)
-        {
-            if (upgradeButton != null) upgradeButton.interactable = false;
-            isUpgraded = true;
-        }
-        else
-        {
-            bool canAffordNextUpgrade = GameManager.Instance.currentCurrency >= upgradeCosts[currentUpgradeLevel];
+        UpdateUpgradeButton();
+    }
 
-            bool isUpgradeResearched = true;
-            if (researchManager != null && currentUpgradeLevel < upgradeResearchIDs.Length)
-            {
-                string requiredUpgradeID = upgradeResearchIDs[currentUpgradeLevel];
-                if (!string.IsNullOrEmpty(requiredUpgradeID))
-                {
-                    isUpgradeResearched = researchManager.IsResearched(requiredUpgradeID);
-                }
-            }
+    public void UnlockFromResearchTree()
+    {
+        isResearchedInTree = true;
+        UpdateModels();
+    }
 
-            if (upgradeButton != null)
-            {
-                upgradeButton.interactable = isPlacedOnGrid && canAffordNextUpgrade && isUpgradeResearched;
-            }
+    public void UnlockUpgradeFromResearchTree(int upgradeIndex)
+    {
+        if (upgradeIndex >= 0 && upgradeIndex < isUpgradeResearchedInTree.Length)
+        {
+            isUpgradeResearchedInTree[upgradeIndex] = true;
         }
     }
 
-    private void UpdateUnlockState()
+    private void UpdateModels()
     {
-        bool researchCompleted = true;
-        if (researchManager != null && !string.IsNullOrEmpty(requiredResearchID))
-        {
-            researchCompleted = researchManager.IsResearched(requiredResearchID);
-        }
+        bool hasEnoughUSD = GameManager.Instance.currentCurrency >= purchaseCost;
+        bool isFullyUnlocked = isResearchedInTree && hasEnoughUSD;
 
-        bool canAffordPurchase = GameManager.Instance.currentCurrency >= purchaseCost;
-        bool isUnlocked = researchCompleted && canAffordPurchase;
-
-        if (lockedModel != null && unlockedModel != null)
-        {
-            if (lockedModel.activeSelf == isUnlocked || unlockedModel.activeSelf != isUnlocked)
-            {
-                lockedModel.SetActive(!isUnlocked);
-                unlockedModel.SetActive(isUnlocked);
-            }
-        }
+        if (lockedModel != null) lockedModel.SetActive(!isFullyUnlocked);
+        if (unlockedModel != null) unlockedModel.SetActive(isFullyUnlocked);
     }
 
     public void NotifyTowerPlaced()
     {
         isPlacedOnGrid = true;
         if (lockedModel != null) lockedModel.SetActive(false);
+        if (unlockedModel != null) unlockedModel.SetActive(true);
+    }
+
+    private void UpdateUpgradeButton()
+    {
+        if (currentUpgradeLevel >= statusSpheres.Length || upgradeButton == null)
+        {
+            if (upgradeButton != null) upgradeButton.interactable = false;
+            return;
+        }
+
+        bool hasEnoughUSD = GameManager.Instance.currentCurrency >= upgradeCosts[currentUpgradeLevel];
+        bool isTreeUnlocked = isUpgradeResearchedInTree[currentUpgradeLevel];
+
+        upgradeButton.interactable = isPlacedOnGrid && hasEnoughUSD && isTreeUnlocked;
     }
 
     public void PurchaseUpgrade()
     {
-        if (isPlacedOnGrid && currentUpgradeLevel < statusSpheres.Length)
-        {
-            int costOfNextUpgrade = upgradeCosts[currentUpgradeLevel];
+        if (!isPlacedOnGrid || currentUpgradeLevel >= statusSpheres.Length) return;
 
-            bool isUpgradeResearched = true;
-            if (researchManager != null && currentUpgradeLevel < upgradeResearchIDs.Length)
+        bool isTreeUnlocked = isUpgradeResearchedInTree[currentUpgradeLevel];
+
+        if (isTreeUnlocked && GameManager.Instance.SpendCurrency(upgradeCosts[currentUpgradeLevel]))
+        {
+            if (statusSpheres[currentUpgradeLevel] != null)
             {
-                string requiredUpgradeID = upgradeResearchIDs[currentUpgradeLevel];
-                if (!string.IsNullOrEmpty(requiredUpgradeID))
-                {
-                    isUpgradeResearched = researchManager.IsResearched(requiredUpgradeID);
-                }
+                statusSpheres[currentUpgradeLevel].material = greenMaterial;
             }
 
-            if (isUpgradeResearched && GameManager.Instance.SpendCurrency(costOfNextUpgrade))
+            currentUpgradeLevel++;
+
+            if (weaponScript != null)
             {
-                if (statusSpheres[currentUpgradeLevel] != null)
-                {
-                    statusSpheres[currentUpgradeLevel].material = greenMaterial;
-                }
+                weaponScript.weaponUpgradeLevel = currentUpgradeLevel;
+            }
 
-                currentUpgradeLevel++;
-
-                if (weaponScript != null)
-                {
-                    weaponScript.weaponUpgradeLevel = currentUpgradeLevel;
-                }
-
-                if (GameManager.Instance != null)
-                {
-                    GameManager.Instance.IncreaseAlienSpawns();
-                }
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.IncreaseAlienSpawns();
             }
         }
     }

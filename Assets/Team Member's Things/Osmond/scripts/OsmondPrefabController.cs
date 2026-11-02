@@ -5,10 +5,10 @@ public class OsmondPrefabController : MonoBehaviour
 {
     [SerializeField]
     private GameObject EverythingPrefab;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
-       if (GradManager.Instance != null)
+        if (GradManager.Instance != null)
         {
             GradManager.Instance.FiftyGrads.AddListener(UnlockResearch);
         }
@@ -16,7 +16,6 @@ public class OsmondPrefabController : MonoBehaviour
         EverythingPrefab.SetActive(false);
     }
 
-    // Update is called once per frame
     private void UnlockResearch()
     {
         EverythingPrefab.SetActive(true);
@@ -37,7 +36,18 @@ public class OsmondPrefabController : MonoBehaviour
 
             if (Keyboard.current.enterKey.wasPressedThisFrame)
             {
-                //pass;
+                // 1. Instantly activate the arsenal prefab without waiting for 50 grads
+                UnlockResearch();
+
+                // 2. Find your teammate's inventory script and bypass the point cap 
+                // so you can afford all the upgrades in the menu
+                PlayerInventory inventory = FindAnyObjectByType<PlayerInventory>();
+                if (inventory != null)
+                {
+                    inventory.Inventory[SimResource.ResourceType.ResearchPoints] = 5000f;
+                }
+
+                Debug.Log("Cheat Activated: Arsenal unlocked and 5000 points added for upgrades!");
             }
         }
     }
