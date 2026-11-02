@@ -13,6 +13,7 @@ public class ZT_IntroDescent : MonoBehaviour
     void Start()
     {
         rig.position = startPoint.position;
+        rig.rotation = Quaternion.Euler(0f, startPoint.eulerAngles.y, 0f);
         foreach (GameObject obj in disableDuringIntro)
         {
             obj.SetActive(false);
