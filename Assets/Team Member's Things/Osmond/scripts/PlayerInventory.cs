@@ -45,7 +45,7 @@ public class PlayerInventory : MonoBehaviour
                 }
             }
 
-            return ResearchOutput * (ResearchEfficiency - 100) * 0.01f * (1f + boostedBuildings * 0.05f);
+            return ResearchOutput * (ResearchEfficiency / 100) * (1f + boostedBuildings * 0.05f);
         }
     }
 
@@ -125,7 +125,7 @@ public class PlayerInventory : MonoBehaviour
         get
         {
             float bonus = GetModifier(SimResource.StatType.ResearchEfficiency);
-            return Mathf.Max(GradCount * 2, 200f + bonus);
+            return GradCount * 2f + bonus;
         }
     }
 

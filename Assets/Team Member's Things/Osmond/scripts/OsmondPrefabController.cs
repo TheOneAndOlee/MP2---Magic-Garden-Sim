@@ -34,6 +34,11 @@ public class OsmondPrefabController : MonoBehaviour
                 GradManager.Instance.AddGraduate();
                 GradManager.Instance.AddGraduate();
             }
+
+            if (Keyboard.current.enterKey.wasPressedThisFrame)
+            {
+                pass;
+            }
         }
     }
 }
