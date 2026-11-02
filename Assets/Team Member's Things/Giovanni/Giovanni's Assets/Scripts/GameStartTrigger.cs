@@ -33,8 +33,10 @@ public class GameStartTrigger : MonoBehaviour
                 gameHasStarted = true;
                 Debug.Log("Player crossed the barricade with bows unlocked. Starting game!");
 
-                // Triggers whatever function you link in the Inspector
-                onGameStart.Invoke();
+                if (onGameStart != null)
+                {
+                    onGameStart.Invoke();
+                }
             }
             else
             {

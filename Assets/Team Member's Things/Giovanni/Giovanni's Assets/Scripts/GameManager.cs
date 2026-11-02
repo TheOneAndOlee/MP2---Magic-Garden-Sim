@@ -77,7 +77,6 @@ public class GameManager : MonoBehaviour
     public void IncreaseAlienSpawns()
     {
         aliensPerSpawn *= 4;
-
         aliensPerSpawn = Mathf.Min(aliensPerSpawn, maxAliensPerSpawn);
 
         alienSpawnRate = Mathf.Max(0.5f, alienSpawnRate - 0.2f);

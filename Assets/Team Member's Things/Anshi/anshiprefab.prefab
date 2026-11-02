@@ -901,6 +901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoneyManager
   money: 5
   moneyText: {fileID: 1103315683391209851}
+  flowerText: {fileID: 0}
 --- !u!1 &4760316308589012051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5626eeb20af3f4986b3174b09c8879c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GradManager
+  FiftyGrads:
+    m_PersistentCalls:
+      m_Calls: []
   nextg: {fileID: 7098697561383874329}
   totalGraduated: 0
   graduatedText: {fileID: 4081893445969508182}
