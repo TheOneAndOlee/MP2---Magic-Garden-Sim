@@ -37,7 +37,7 @@ public class OsmondPrefabController : MonoBehaviour
 
             if (Keyboard.current.enterKey.wasPressedThisFrame)
             {
-                pass;
+                //pass;
             }
         }
     }
