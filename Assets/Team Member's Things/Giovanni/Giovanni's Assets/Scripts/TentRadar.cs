@@ -3,28 +3,29 @@ using UnityEngine;
 public class TentRadar : MonoBehaviour
 {
     public GameObject arrowPrefab;
-    public Transform[] floatingBows; 
-    
+    public Transform[] floatingBows;
+
     public float attackRadius = 15f;
-    public float fireRate = 0.25f; 
+    public float fireRate = 0.25f;
     private float fireTimer;
-    
-    private int currentBowIndex = 0; 
+
+    private int currentBowIndex = 0;
 
     [Header("Audio Settings")]
-    public AudioClip shootSound; 
+    public AudioClip shootSound;
+    [Range(0f, 1f)] public float shootVolume = 0.5f;
 
     void Update()
     {
         fireTimer -= Time.deltaTime;
-        
+
         if (fireTimer <= 0f)
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             if (enemies.Length == 0) return;
 
             Transform closestEnemy = FindClosestEnemy();
-            
+
             if (closestEnemy != null)
             {
                 Shoot(closestEnemy);
@@ -37,18 +38,18 @@ public class TentRadar : MonoBehaviour
     {
         // 1. Pick the bow whose turn it is
         Transform bow = floatingBows[currentBowIndex];
-        
+
         // 2. Fire the arrow from that specific bow
         GameObject newArrow = Instantiate(arrowPrefab, bow.position, bow.rotation);
         ArrowArc arrowScript = newArrow.GetComponent<ArrowArc>();
         if (arrowScript != null) arrowScript.target = target;
-        
-        // Play the shooting sound at the specific bow's location
+
+        // Play the shooting sound at the specific bow's location with the new volume slider
         if (shootSound != null)
         {
-            AudioSource.PlayClipAtPoint(shootSound, bow.position);
+            AudioSource.PlayClipAtPoint(shootSound, bow.position, shootVolume);
         }
-        
+
         // 3. Move to the next bow in line. If we hit the end, loop back to the first bow.
         currentBowIndex++;
         if (currentBowIndex >= floatingBows.Length)
@@ -61,7 +62,7 @@ public class TentRadar : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         Transform closest = null;
-        float minDistance = attackRadius; 
+        float minDistance = attackRadius;
 
         foreach (GameObject enemy in enemies)
         {

@@ -3,24 +3,25 @@ using UnityEngine;
 public class TowerShooter : MonoBehaviour
 {
     [Header("Dependencies")]
-    public StoreItemManager storeManager; 
+    public StoreItemManager storeManager;
     public GameObject bulletPrefab;
-    public Transform firePoint; 
+    public Transform firePoint;
 
     [Header("Combat Stats")]
     public float range = 15f;
-    public float fireRate = 1f; 
+    public float fireRate = 1f;
     public int baseDamage = 10;
     public int damagePerUpgrade = 10;
     private float fireCountdown = 0f;
-    public string enemyTag = "Enemy"; 
+    public string enemyTag = "Enemy";
 
     [Header("Upgrade Visuals")]
     [Tooltip("Slot 0 = Base Level. Slots 1-3 = Upgrades")]
-    public Material[] upgradeBulletMaterials; 
+    public Material[] upgradeBulletMaterials;
 
     [Header("Audio Settings")]
-    public AudioClip shootSound; 
+    public AudioClip shootSound;
+    [Range(0f, 1f)] public float shootVolume = 0.5f;
 
     private Transform target;
 
@@ -73,20 +74,21 @@ public class TowerShooter : MonoBehaviour
     {
         GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Projectile projectile = bulletGO.GetComponent<Projectile>();
-        
+
         if (projectile != null)
         {
             int level = storeManager != null ? storeManager.currentUpgradeLevel : 0;
             int safeIndex = Mathf.Clamp(level, 0, upgradeBulletMaterials.Length - 1);
-            
+
             int calculatedDamage = baseDamage + (level * damagePerUpgrade);
-            
+
             projectile.Initialize(target, upgradeBulletMaterials[safeIndex], calculatedDamage);
         }
 
         if (shootSound != null)
         {
-            AudioSource.PlayClipAtPoint(shootSound, firePoint.position);
+            // Use the new shootVolume variable to control the loudness
+            AudioSource.PlayClipAtPoint(shootSound, firePoint.position, shootVolume);
         }
     }
 }
