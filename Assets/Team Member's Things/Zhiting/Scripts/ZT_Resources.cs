@@ -11,7 +11,7 @@ public class ZT_Resources : MonoBehaviour
     void Start()
     {
         AddResources(ZT_ResourceType.Seed, 20);
-        AddResources(ZT_ResourceType.Rainwater, 5);
+        AddResources(ZT_ResourceType.Rainwater, 9);
     }
 
     void Update()
