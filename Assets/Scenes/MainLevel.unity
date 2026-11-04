@@ -2277,6 +2277,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2912690121690089089, guid: 122dbec2698bf7244941b4cb2b87067c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2945363361539662350, guid: 122dbec2698bf7244941b4cb2b87067c, type: 3}
       propertyPath: m_Name
       value: ZT_Garden
@@ -3180,6 +3184,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3889828901477873715, guid: b673e78b6ab8a4d4ea5d2119b6724883, type: 3}
   m_PrefabInstance: {fileID: 1449510936}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1456628564 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1670256625, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1544187279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1490216798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3191,11 +3200,11 @@ PrefabInstance:
     - target: {fileID: 289707796880421647, guid: 6ca8c224613d0463d811487c95871661, type: 3}
       propertyPath: rightHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1456628564}
     - target: {fileID: 873716487090450985, guid: 6ca8c224613d0463d811487c95871661, type: 3}
       propertyPath: rightHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1456628564}
     - target: {fileID: 1103315683391209851, guid: 6ca8c224613d0463d811487c95871661, type: 3}
       propertyPath: m_text
       value: 'Money Left: 0'
@@ -3207,7 +3216,7 @@ PrefabInstance:
     - target: {fileID: 2114949263566315961, guid: 6ca8c224613d0463d811487c95871661, type: 3}
       propertyPath: rightHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1456628564}
     - target: {fileID: 2782003073525168915, guid: 6ca8c224613d0463d811487c95871661, type: 3}
       propertyPath: m_text
       value: "Lecture Hall: 2                                    Dining Hall 5\n\nBookstore:
@@ -3282,7 +3291,7 @@ PrefabInstance:
     - target: {fileID: 6793360468836613816, guid: 6ca8c224613d0463d811487c95871661, type: 3}
       propertyPath: rightHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1456628564}
     - target: {fileID: 7060768612946188071, guid: 6ca8c224613d0463d811487c95871661, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35.57061
@@ -3306,7 +3315,7 @@ PrefabInstance:
     - target: {fileID: 7221918476454888053, guid: 6ca8c224613d0463d811487c95871661, type: 3}
       propertyPath: rightHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1456628564}
     - target: {fileID: 7614121777121013381, guid: 6ca8c224613d0463d811487c95871661, type: 3}
       propertyPath: flowerText
       value: 
